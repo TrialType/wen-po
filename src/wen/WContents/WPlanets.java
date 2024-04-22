@@ -55,6 +55,8 @@ public class WPlanets {
                 r.showSpawns = false;
             };
 
+            techTree = Planets.serpulo.techTree;
+
             TechTree.TechNode g = TechTree.nodeRoot("f", Blocks.coreShard, () -> {
             });
             g.planet = GEO;
