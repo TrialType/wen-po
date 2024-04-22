@@ -1,0 +1,82 @@
+{
+"name":"多重塑钢压缩机"
+//此工厂在游戏中的名字
+	"type": "GenericCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂GenericSmelter
+	"health": 640,
+	//生命值
+	"outputItem": {"item": "plastanium", "amount": 4	},
+	//输出物品为:物品 3
+	"itemCapacity": 35,
+	//工厂物品的最大容量
+	"liquidCapacity":90
+	//工厂液容
+	"size": 3,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": true,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 60,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//粒子特效,无
+	"craftEffect":"none",
+	//运行特效,无
+	"drawer":[
+//贴图特效
+	        {
+	        "type": "DrawDefault"
+	        //识别此建筑本体贴图
+	        },
+	        {
+         "type": "DrawFlame",
+         //识别此建筑特效贴图
+         "flameRadius": 0.001,
+         //整体半径 
+         "flameRadiusIn": 0.001,
+         //里面白色的圆心的半径
+         "flameRadiusScl": 0.001,           
+         //外面有颜色的圆边的半径
+         "flameRadiusMag": 0.001,
+         //整体缩放时间
+         "flameRadiusInMag": 0.001,
+         //白色圆点缩放时间
+         "flameColor": "FFF999"
+         //效果颜色
+	        }
+        	]
+		"updateEffectChance":0.04
+	//工作特效数量
+	"consumes": {
+	//运行需求:
+	"power":6
+"items": ["titanium/5"]
+	"liquid":"oil/0.5"
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "titanium", "amount":85 },
+		//钛:85
+		{ "item": "lead", "amount": 120 },
+		//铅:120
+		{ "item": "graphite", "amount": 65 },
+		//石墨:65
+		{ "item": "plastanium", "amount": 80 },
+		//塑钢
+		{ "item": "thorium", "amount": 40 },
+		//钍
+		{ "item": "silicon", "amount": 120 }
+		//硅
+		],
+		
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "plastanium-compressor"
+//科技:塑钢厂
+}

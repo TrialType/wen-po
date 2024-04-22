@@ -1,0 +1,274 @@
+{
+	"type": "ItemTurret",//类型
+	"maxAmmo":40,//弹夹容量
+	"name": "强化气旋",//名字:多管炮
+	"health": 2610,//生命值
+	"size": 4,//大小
+	"reload": 6.5,//射速
+	"range": 300,//自动攻击范围=range值÷8
+	"ammoPerShot": 2//发射一次需要多少弹药
+ "targetAir":true,//瞄准空军
+ "targetGround":true,//瞄准陆军
+	"consumes": {//消耗
+	"coolant": {//冷却剂
+ "amount": 0.4,//数量
+	"optional": true//是否当做加速液体:true是/false否
+	}
+	}
+	"shoot": {//射击模式设置
+	"shots": 1,//一次性发射子弹的数量
+	"shotDelay": 1,//射击间隔
+	"type": "ShootAlternate",//类型:射击交替
+ "barrels": 3,//炮口数量
+	"spread": 4//炮口间距
+	},
+	"xRand": 1,//每发子弹之间的距离
+	"shootEffect":"none",//射击特效
+ "smokeEffect":"none",//冒烟特效
+ "ammoUseEffect":"none",//换弹特效
+ "coolEffect":"none",//液体加速特效
+	"inaccuracy": 10,//射击误差
+	"rotateSpeed": 12,//旋转速度
+	"shake": 1,//后摇程度
+	"recoil":4,//后坐力
+	"ammoTypes": {//可用弹药
+	"metaglass": {//玻璃
+	"type": "FlakBulletType",//类型:普通爆炸子弹
+	"collidesGround": true//对地面有伤害
+	"collidesAir": true//对空中有伤害
+	"speed": 5,//速度
+	"damage": 8,//伤害
+	"splashDamage":60,//范围伤害
+	"splashDamageRadius": 33.04,//伤害范围
+	"lifetime": 60,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"knockback":0.1,//击退
+	"ammoMultiplier": 2,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	"backColor":EBEEF5FF,//描边颜色
+ "frontColor":D0D0E0FF,//中间颜色
+	"fragBullets":6,//弹片数量
+ "fragBullet":{
+	"width": 2,//子弹宽度
+ "height": 3,//子弹长度
+	"damage":16,//伤害
+ "lifetime":30,//弹药存在时间
+ "speed":1.5,//子弹速度
+ "despawnEffect":"none"//弹药贴图,
+ "bulletSprite":"弹片",
+ "backColor":EBEEF5FF,//描边颜色
+ "frontColor":D0D0E0FF,//中间颜色
+ }
+ }
+	"plastanium": {//塑钢
+	"type": "FlakBulletType",//类型:普通爆炸子弹
+	"collidesGround": true//对地面有伤害
+	"collidesAir": true//对空中有伤害
+	"speed": 5,//速度
+	"damage": 10,//伤害
+	"splashDamage":49.3,//范围伤害
+	"splashDamageRadius": 52.8,//伤害范围
+	"lifetime": 60,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"knockback":0.1,//击退
+	"ammoMultiplier": 4,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	"backColor":9CB664FF,//描边颜色
+ "frontColor":CBD97FFF,//中间颜色
+	"fragBullets":8,//弹片数量
+ "fragBullet":{
+	"width": 2,//子弹宽度
+ "height": 3,//子弹长度
+	"damage":16,//伤害
+ "lifetime":30,//弹药存在时间
+ "speed":1.5,//子弹速度
+ "despawnEffect":"none"//弹药贴图,
+ "bulletSprite":"弹片",
+ "backColor":9CB664FF,//描边颜色
+ "frontColor":CBD97FFF,//中间颜色
+ }
+ }
+	"surge-alloy": {//合金
+	"type": "FlakBulletType",//类型:普通爆炸子弹
+	"collidesGround": true//对地面有伤害
+	"collidesAir": true//对空中有伤害
+	"speed": 5,//速度
+	"damage": 17.33,//伤害
+	"splashDamage": 100,//范围伤害
+	"splashDamageRadius": 50.08,//伤害范围
+	"lightning": 3,//电弧分裂数
+	"lightningLength": 6,//电弧长度
+	"lightningDamage": 15,//电弧伤害
+	"lifetime": 60,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"knockback":0.1,//击退
+	"status":"shocked",//击中附加状态:电击
+	"ammoMultiplier": 5,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	"backColor":D99F6BFF,//描边颜色
+ "frontColor":E8D174FF,//中间颜色
+	}
+	"blast-compound": {//混爆
+	"type": "FlakBulletType",//类型:普通爆炸子弹
+	"collidesGround": true//对地面有伤害
+	"collidesAir": true//对空中有伤害
+	"speed": 5,//速度
+"damage": 8,//伤害
+	"splashDamage":60,//范围伤害
+	"splashDamageRadius": 80,//伤害范围
+	"lifetime": 60,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"knockback":2,//击退
+	"status":"blasted",//击中附加状态:爆炸
+	"ammoMultiplier": 5,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	"backColor":C85C51FF,//描边颜色
+ "frontColor":FF795EFF,//中间颜色
+	}
+	},
+	"requirements": [//建材
+	"copper/900"//铜
+	"graphite/300"//石墨
+	"titanium/100"//钛
+	"silicon/120"//硅
+	"thorium/250"//钍
+	"plastanium/175"//塑钢
+	"surge-alloy/250"//合金
+	],
+	"recoils":3//炮口伸缩数量
+	"drawer":{
+	"type":"DrawMulti",
+ "drawers":[
+ {
+ "type":"DrawTurret",
+ "parts":[
+ {
+ "type":"RegionPart",
+ "mirror":false,//是否镜像显示
+ "top":false,//是否置顶
+ "under":true//是否置底
+ "x":0,"y":0,//初始坐标
+ "suffix":"-炮口",//读取滑块贴图,这写后缀
+ "layer":0,//图层
+ "recoilIndex":0//编号
+ "moves": [
+	{
+	"progress": "recoil",//有此接口,滑块会攻击一次回缩一次
+	"X":0,//横向滑动
+	"y": -2,//纵向滑动
+	"Rot":0,//旋转角度数
+	}
+	],
+	"heatProgress": "recoil"
+ }
+ {
+ "type":"RegionPart",
+ "mirror":false,//是否镜像显示
+ "top":false,//是否置顶
+ "under":true//是否置底
+ "x":0,"y":0,//初始坐标
+ "suffix":"-炮口1",//读取滑块贴图,这写后缀
+ "layer":0,//图层
+ "recoilIndex":1//编号
+ "moves": [
+	{
+	"progress": "recoil",//有此接口,滑块会攻击一次回缩一次
+	"X":0,//横向滑动
+	"y": -2,//纵向滑动
+	"Rot":0,//旋转角度数
+	}
+	],
+	"heatProgress": "recoil"
+ }
+ {
+ "type":"RegionPart",
+ "mirror":false,//是否镜像显示
+ "top":false,//是否置顶
+ "under":true//是否置底
+ "x":0,"y":0,//初始坐标
+ "suffix":"-炮口2",//读取滑块贴图,这写后缀
+ "layer":0,//图层
+ "recoilIndex":2//编号
+ "moves": [
+	{
+	"progress": "recoil",//有此接口,滑块会攻击一次回缩一次
+	"X":0,//横向滑动
+	"y": -2,//纵向滑动
+	"Rot":0,//旋转角度数
+	}
+	],
+	"heatProgress": "recoil"
+ }
+ ]
+ }
+ ]
+ }
+ "canOverdrive":true,//超频是否应用
+ "shootSound":"shoot",//射击音效
+ "heatColor":FF3000FF,//过热颜色
+	"category": "turret",//游戏内分类:炮台
+	"research": {//科技
+ "parent": "cyclone",//前置科技
+ "objectives": [
+ {
+	"type": "SectorComplete",
+	"preset": "desolateRift"//地区
+	}
+	]
+ }
+}
+/*物品:
+copper
+ "backColor":B8705CFF,//描边颜色
+ "frontColor":D99D73FF,//中间颜色
+lead铅//
+ "backColor":6F687EFF,//描边颜色
+ "frontColor":AB99D3FF,//中间颜色
+metaglass玻璃//
+ "backColor":D0D0E0FF,//描边颜色
+ "frontColor":EBEEF5FF,//中间颜色
+graphite石墨//
+ "backColor":626F9BFF,//描边颜色
+ "frontColor":95ABD9FF,//中间颜色
+sand沙/
+coal煤/
+titanium钛//
+ "backColor":7575C8FF,//描边颜色
+ "frontColor":919FE7FF,//中间颜色
+thorium钍//
+ "backColor":CB8EBFFF,//描边颜色
+ "frontColor":F9A3C7FF,//中间颜色
+scrap废料//
+ "backColor":666666FF,//描边颜色
+ "frontColor":9B928BFF,//中间颜色
+silicon硅//
+ "backColor":3A3A50FF,//描边颜色
+ "frontColor":767A84FF,//中间颜色
+plastanium塑钢//
+ "backColor":9CB664FF,//描边颜色
+ "frontColor":CBD97FFF,//中间颜色
+phase-fabric相织布
+ "backColor":F19583FF,//描边颜色
+ "frontColor":FFD59EFF,//中间颜色
+surge-alloy浪涌合金
+ "backColor":D99F6BFF,//描边颜色
+ "frontColor":E8D174FF,//中间颜色
+spore-pod孢子/
+blast-compound爆炸物
+ "backColor":C85C51FF,//描边颜色
+ "frontColor":FF795EFF,//中间颜色
+pyratite硫化物
+ "backColor":D37F47FF,//描边颜色
+ "frontColor":FFAA5FFF,//中间颜色
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

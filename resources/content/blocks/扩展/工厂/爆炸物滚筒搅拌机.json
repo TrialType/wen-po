@@ -1,0 +1,83 @@
+{
+"name":"爆炸物滚筒搅拌机"
+//此工厂在游戏中的名字
+	"type": "GenericCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂GenericSmelter
+	"health": 560,
+	//生命值
+	"outputItem": {"item": "blast-compound", "amount": 8	},
+	//输出物品为:物品 3
+	"itemCapacity": 45,
+	//工厂物品的最大容量
+	"size": 3,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": false,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 50,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//粒子特效,无
+	"craftEffect":"none",
+	//运行特效,无
+	"consumes": {
+	//运行需求:
+	"items": {	
+	"power":2
+	"items": [
+	//要物品:
+	"pyratite/8",
+	"spore-pod/8"
+	]
+		}
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "copper", "amount": 90},
+		//铜:100
+		{ "item": "lead", "amount": 85 },
+		//铅:85
+		{ "item": "graphite", "amount": 65 }
+		//石墨:35
+		{ "item": "titanium", "amount": 50 },
+		//钛
+		{ "item": "silicon", "amount": 80 },
+		//硅
+		],
+		
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "blast-mixer"
+//科技:大硅
+}
+/*物品:
+copper铜
+lead铅
+metaglass玻璃
+graphite石墨
+sand沙
+coal煤
+titanium钛
+thorium钍
+scrap废料
+silicon硅
+plastanium塑钢
+phase-fabric相织布
+surge-alloy浪涌合金
+spore-pod孢子
+blast-compound爆炸物
+pyratite硫化物
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

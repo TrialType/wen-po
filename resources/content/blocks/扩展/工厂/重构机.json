@@ -1,0 +1,150 @@
+{
+"name":"重构机"
+//此工厂在游戏中的名字
+	"type": "AttributeCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂AttributeCrafter
+	"health": 840,
+	//生命值
+	"type": "Separator",
+	"results": [
+ "copper/72"
+ "lead/72"
+ "metaglass/72"
+ "graphite/72"
+ "sand/72"
+ "coal/72"
+ "titanium/72"
+ "thorium/72"
+ "scrap/72"
+ "silicon/72"
+ "plastanium/72"
+ "phase-fabric/72"
+ "surge-alloy/72"
+ "spore-pod/72"
+ "blast-compound/72"
+ "pyratite/72"
+		]
+	//输出物品为:物品 3
+	"itemCapacity": 100,
+	//工厂物品的最大容量
+	"itemLiquids":3000
+	//工厂液体的最大容量
+	"size": 4,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": true,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 1
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//常驻粒子特效,无none,有smeltsmoke
+	"craftEffect":"none",
+	//运行粒子特效,无none,有smeltsmoke
+"drawer":[
+	    {
+	        "type":"DrawDefault"
+	    },
+	    {
+	        "type": "DrawLiquidTile",
+	        "drawLiquid": "slag",
+	        "drawLiquidLight": true
+	    },
+	    {
+            "type": "DrawLiquidRegion",
+            "drawLiquid":"slag"
+            "suffix": "-liquid"
+            
+     },
+	    {
+	        "type":"DrawRegion",
+	        "suffix": "-top"
+	    }
+	    {
+				"type": "DrawRegion",
+				"suffix": "-转",
+				"spinSprite": true,
+				"rotateSpeed": 6
+			},
+	]
+		"updateEffectChance":0.04
+	//工作特效数量
+		"consumes": {
+		"power": 50,
+		"liquid": "slag/0.1"
+		"items":[
+		"scrap/1"
+		]
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+	"copper/100"
+ "lead/100"
+ "metaglass/100"
+ "graphite/100"
+ "sand/100"
+ "coal/100"
+ "titanium/100"
+ "thorium/100"
+ "scrap/100"
+ "silicon/100"
+ "plastanium/100"
+ "phase-fabric/100"
+ "surge-alloy/100"
+ "spore-pod/100"
+ "blast-compound/100"
+ "pyratite/100"
+			],
+		"attribute":"heat"
+		//读取地板,所有热源
+	"baseEfficiency":1
+	//工厂基本效率,游戏内里百分比
+	"boostScale":0.083345
+//一格增加的效率,1=50%  0.1=5%  0.01=0.5%
+	"maxHeatBoost":2
+	//最大提升效率(倍数)
+	//1为100% 2为200% 以此类推
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "disassembler"
+//科技:大硅
+}
+/*
+地形工厂2倍效率boostScale数值
+1×1:2
+2×2:
+3×3:0.15
+4×4:0.083345
+5×5:0.0532
+6×6:0.0373
+
+/*物品:
+copper铜
+lead铅
+metaglass玻璃
+graphite石墨
+sand沙
+coal煤
+titanium钛
+thorium钍
+scrap废料
+silicon硅
+plastanium塑钢
+phase-fabric相织布
+surge-alloy浪涌合金
+spore-pod孢子
+blast-compound爆炸物
+pyratite硫化物
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

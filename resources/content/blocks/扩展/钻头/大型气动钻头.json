@@ -1,0 +1,67 @@
+{
+	"name": "大型气动钻机",
+	//名字
+	"type": "Drill",
+	//种类
+	"size": 4,
+	//大小
+	"health": 640,
+	//生命值
+	"tier": 3,
+	//钻头等级
+	"drillTime": 400,
+	//60÷所写数值×钻头占地大小=游戏内显示数值
+	"liquidBoostIntensity": 1.6,
+	//液体加速倍率:1=2.56
+	"canOverdrive": true,
+	//是否接受加速
+	"warmupSpeed": 0.02,
+	//预热速度
+	"drillEffect": "mineBig",
+	//挖掘效果
+	"updateEffect": "mineBig",
+	//挖掘更新效果
+	"rotateSpeed": 2,
+	//动画旋转速度
+	"drawMineItem": true,
+	//是否显示所挖矿物
+	"updateEffect":"none",
+	//常驻粒子特效,无none,有smeltsmoke
+	"craftEffect":"none",
+	//运行粒子特效,无none,有smeltsmoke
+	"consumes": {
+	//消耗
+		"liquid": {
+		//可加速液体
+			"liquid": "water",
+			//液体:水
+			"amount": 0.1,
+			//数量:0.3×60
+			"booster": true,
+			//输入液体是否加速
+			"optional": true
+			/*本词条为必须品,如有"booster": true时,
+			该词条决定液体为运行的加速因素
+			如没有"booster": true,或者,booster为false时,
+			该词条决定液体为运行的必要因素
+			*/
+		}
+	},
+	"itemCapacity": 20,
+	//物容
+	"liquidCapacity": 20,
+	//液容
+	"requirements": [
+	//建材
+		"copper/45",
+		//铜
+		"lead/35",
+		//铅
+		"graphite/45"
+		//石墨
+	],
+	"category": "production",
+	//音效
+	"research": "pneumatic-drill"
+	//科技
+}

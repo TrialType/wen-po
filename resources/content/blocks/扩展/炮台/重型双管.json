@@ -1,0 +1,240 @@
+{
+	"type": "ItemTurret",//类型
+	"maxAmmo":40,//弹夹容量
+	"name": "重型双管",//名字:多管炮
+	"health": 1000,//生命值
+	"size": 3,//大小
+	"reload": 6.5,//射速
+	"range": 240,//自动攻击范围=range值÷8
+	"ammoPerShot": 2//发射一次需要多少弹药
+ "targetAir":true,//瞄准空军
+ "targetGround":true,//瞄准陆军
+	"consumes": {//消耗
+	"coolant": {//冷却剂
+ "amount": 0.3,//数量
+	"optional": true//是否当做加速液体:true是/false否
+	}
+	}
+	"shoot": {//射击模式设置
+	"shots": 1,//一次性发射子弹的数量
+	"shotDelay": 1,//射击间隔
+	"type": "ShootAlternate",//类型:射击交替
+ "barrels": 4,//炮口数量
+	"spread": 3//炮口间距
+	},
+	"xRand": 1,//每发子弹之间的距离
+	"shootEffect":"none",//射击特效
+ "smokeEffect":"none",//冒烟特效
+ "ammoUseEffect":"none",//换弹特效
+ "coolEffect":"none",//液体加速特效
+	"inaccuracy": 1,//射击误差
+	"rotateSpeed": 12,//旋转速度
+	"shake": 1,//后摇程度
+	"recoil":3,//后坐力
+	"ammoTypes": {//可用弹药
+	"copper": {//铜
+	"speed": 5,//速度
+	"damage": 18,//伤害
+	"lifetime": 48,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"knockback":0.3,//击退
+	"ammoMultiplier": 2,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	}
+	"graphite": {//石墨
+	"speed": 5,//速度
+	"damage": 32,//伤害
+	"lifetime": 48,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"knockback":5,//击退
+	"ammoMultiplier": 3,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	}
+	"titanium": {//钛
+	"speed": 5,//速度
+	"damage": 44,//伤害
+	"lifetime": 48,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"pierce":true,//是否穿透
+	"pierceBuilding":false,//是否穿透建筑
+	"pierceCap":1,//穿透数量
+	"knockback":0.3,//击退
+	"ammoMultiplier": 3,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	}
+	"silicon": {//硅
+	"speed": 5,//速度
+	"damage": 22,//伤害
+	"lifetime": 48,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"homingRange": 64,//追踪范围
+	"homingPower": 1,//追踪能力
+	"ammoMultiplier": 5,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	}
+	"pyratite": {//硫
+	"speed": 5,//速度
+	"damage": 24,//伤害
+	"splashDamage": 16,//范围伤害
+	"splashDamageRadius": 28.8,//伤害范围
+	"lifetime": 48,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"makeFire": true//击中生成火焰
+	"status":"burning",//击中附加状态:燃烧
+ "statusDuration":600,//状态持续时间10秒
+	"ammoMultiplier": 3,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	}
+	"thorium": {//钍
+	"speed": 5,//速度
+	"damage": 52,//伤害
+	"lifetime": 48,//弹药存在时间
+	"width": 7,//子弹宽度
+	"height": 10,//子弹长度
+	"pierce":true,//是否穿透
+	"pierceBuilding":true,//是否穿透建筑
+	"pierceCap":2,//穿透数量
+	"knockback":1,//击退
+	"ammoMultiplier": 4,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	}
+	},
+	"requirements": [//建材
+	"copper/75"//铜
+	"lead/75"//铅
+	"graphite/75"//石墨
+	"titanium/75"//钛
+	"silicon/100"//硅
+	"thorium/75"//钍
+	],
+	"recoils":4//炮口伸缩数量
+	"drawer":{
+	"type":"DrawMulti",
+ "drawers":[
+ {
+ "type":"DrawTurret",
+ "parts":[
+ {
+ "type":"RegionPart",
+ "mirror":false,//是否镜像显示
+ "top":false,//是否置顶
+ "under":true//是否置底
+ "x":0,"y":0,//初始坐标
+ "suffix":"-炮口",//读取滑块贴图,这写后缀
+ "layer":0,//图层
+ "recoilIndex":0//编号
+ "moves": [
+	{
+	"progress": "recoil",//有此接口,滑块会攻击一次回缩一次
+	"X":0,//横向滑动
+	"y": -2,//纵向滑动
+	"Rot":0,//旋转角度数
+	}
+	],
+	"heatProgress": "recoil"
+ }
+ {
+ "type":"RegionPart",
+ "mirror":false,//是否镜像显示
+ "top":false,//是否置顶
+ "under":true//是否置底
+ "x":0,"y":0,//初始坐标
+ "suffix":"-炮口1",//读取滑块贴图,这写后缀
+ "layer":0,//图层
+ "recoilIndex":1//编号
+ "moves": [
+	{
+	"progress": "recoil",//有此接口,滑块会攻击一次回缩一次
+	"X":0,//横向滑动
+	"y": -2,//纵向滑动
+	"Rot":0,//旋转角度数
+	}
+	],
+	"heatProgress": "recoil"
+ }
+ {
+ "type":"RegionPart",
+ "mirror":false,//是否镜像显示
+ "top":false,//是否置顶
+ "under":true//是否置底
+ "x":0,"y":0,//初始坐标
+ "suffix":"-炮口2",//读取滑块贴图,这写后缀
+ "layer":0,//图层
+ "recoilIndex":2//编号
+ "moves": [
+	{
+	"progress": "recoil",//有此接口,滑块会攻击一次回缩一次
+	"X":0,//横向滑动
+	"y": -2,//纵向滑动
+	"Rot":0,//旋转角度数
+	}
+	],
+	"heatProgress": "recoil"
+ }
+ {
+ "type":"RegionPart",
+ "mirror":false,//是否镜像显示
+ "top":false,//是否置顶
+ "under":true//是否置底
+ "x":0,"y":0,//初始坐标
+ "suffix":"-炮口3",//读取滑块贴图,这写后缀
+ "layer":0,//图层
+ "recoilIndex":3//编号
+ "moves": [
+	{
+	"progress": "recoil",//有此接口,滑块会攻击一次回缩一次
+	"X":0,//横向滑动
+	"y": -2,//纵向滑动
+	"Rot":0,//旋转角度数
+	}
+	],
+	"heatProgress": "recoil"
+ }
+ ]
+ }
+ ]
+ }
+ "canOverdrive":true,//超频是否应用
+ "shootSound":"shootBig",//射击音效
+ "heatColor":FF3000FF,//过热颜色
+	"category": "turret",//游戏内分类:炮台
+	"research": {//科技
+ "parent": "强化双管",//前置科技
+ "objectives": [
+ {
+	"type": "SectorComplete",
+	"preset": "windsweptIslands"//地区
+	}
+	]
+ }
+}
+/*物品:
+copper铜
+lead铅
+metaglass玻璃
+graphite石墨
+sand沙
+coal煤
+titanium钛
+thorium钍
+scrap废料
+silicon硅
+plastanium塑钢
+phase-fabric相织布
+surge-alloy浪涌合金
+spore-pod孢子
+blast-compound爆炸物
+pyratite硫化物
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

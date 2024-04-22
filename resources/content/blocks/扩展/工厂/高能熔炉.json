@@ -1,0 +1,116 @@
+{
+"name":"高能熔炉"
+//此工厂在游戏中的名字
+	"type": "AttributeCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂AttributeCrafter
+	"health": 360,
+	//生命值
+	"outputLiquid": {"liquid": "slag", "amount": 1	},
+	//输出液体量为:9.321×60
+	"itemCapacity": 60,
+	//工厂物品的最大容量
+	"LiquidCapacity":600
+	//液体容量
+	"size": 3,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": true,
+	//工厂是否可以装载液体,是；false:否
+	"hasItems": true,
+	//工厂是否可以装载物品,是；false:否
+	"craftTime": 15,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//常驻粒子特效,无none,有smeltsmoke
+	"craftEffect":"none",
+	//运行粒子特效,无none,有smeltsmoke
+	"drawer": {
+		"type": "DrawMulti",
+		"drawers": [
+			"DrawDefault",
+			{
+				"type": "DrawLiquidRegion",
+				"drawLiquid": "slag",
+				"suffix": "-liquid"
+			}
+		]
+	},
+		"updateEffectChance":0.04
+	//工作特效数量
+	"consumes": {
+	//需要供给的资源:
+	"power": 3,
+	//要电:2.5×60=150
+	"items": {	
+	"items": [
+	//要物品:
+	{ "item": "scrap", "amount": 12 }	
+		//废料
+	]
+		}
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "copper", "amount":100 },
+		//铜:100
+		{ "item": "lead", "amount": 100 },
+		//铅:85
+		{ "item": "silicon", "amount": 120 }
+		//硅:35
+		{ "item": "graphite", "amount": 100 },
+		//石墨
+		{ "item": "plastanium", "amount": 60 },
+		//塑钢
+		{ "item": "thorium", "amount": 80 },
+		//钍
+		{ "item": "metaglass", "amount": 100 },
+		//玻璃
+		],
+		"attribute":"heat"
+		//读取地板,所有热源
+	"baseEfficiency":1
+	//工厂基本效率,游戏内里百分比
+	"boostScale":0.15
+	//一格增加效率,游戏里是百分比
+	//该参数和地板有关系
+	"maxHeatBoost":2
+	//最大提升效率(倍数)
+	//1为100% 2为200% 以此类推
+	"category": "crafting",
+	//游戏内分类:工厂(制作)
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "热能熔炉"
+//科技:大硅(之后)
+}
+/*物品:
+copper铜
+lead铅
+metaglass玻璃
+graphite石墨
+sand沙
+coal煤
+titanium钛
+thorium钍
+scrap废料
+silicon硅
+plastanium塑钢
+phase-fabric相织布
+surge-alloy浪涌合金
+spore-pod孢子
+blast-compound爆炸物
+pyratite硫化物
+
+
+
+
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

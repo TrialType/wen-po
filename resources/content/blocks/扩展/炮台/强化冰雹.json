@@ -1,0 +1,181 @@
+{
+	"type": "ItemTurret",//类型
+	"name": "强化冰雹",//名字:多管炮
+	"health": 521//生命值
+	"size": 2,//大小
+	"reload": 30,//射弹数/s=raloed÷60×子弹的装填时间倍率
+	"range": 360,//自动攻击范围=range值÷8
+	"ammoPerShot": 2//发射一次需要多少弹药
+ "targetAir":false,//瞄准空军
+ "targetGround":true,//瞄准陆军
+	"consumes": {//消耗
+	"coolant": {//冷却剂
+ "amount": 0.2,//数量
+	"optional": true//是否当做加速液体:true是/false否
+	}
+	}
+	"shoot": {//射击模式设置
+	"shots": 1,//一次性发射子弹的数量
+	"shotDelay": 1,//射击间隔
+	"type": "ShootAlternate",//类型:射击交替
+ "barrels": 1,//炮口数量
+	"spread": 0//炮口间距
+	},
+	"xRand": 1,//每发子弹之间的距离
+	"shootEffect":"none",//射击特效
+ "smokeEffect":"none",//冒烟特效
+ "ammoUseEffect":"none",//换弹特效
+ "coolEffect":"none",//液体加速特效
+	"inaccuracy": 1,//射击误差
+	"rotateSpeed": 16,//旋转速度
+	"shake": 1,//后摇程度
+	"recoil":2,//后坐力
+	"maxAmmo":24,//弹夹容量
+	"ammoTypes": {//可用弹药
+	"graphite": {//石墨
+	"type":"ArtilleryBulletType",//种类:火炮子弹
+	"speed": 5,//速度
+	"damage": 22,//伤害
+	"splashDamage":44,//范围伤害
+	"splashDamageRadius": 24.48,//伤害范围
+	"lifetime": 40.8,//弹药存在时间
+	"width": 15,//子弹宽度
+	"height": 15,//子弹长度
+	"knockback":0.3,//击退
+	"ammoMultiplier": 2,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药死亡特效
+	"backColor":626F9BFF,//描边颜色
+ "frontColor":95ABD9FF,//中间颜色
+	}
+	"silicon": {//硅
+	"type":"ArtilleryBulletType",//种类:火炮子弹
+	"speed": 5,//速度
+	"damage": 22,//伤害
+	"splashDamage":44,//范围伤害
+	"splashDamageRadius": 24.48,//伤害范围
+	"lifetime": 40.8,//弹药存在时间
+	"width": 15,//子弹宽度
+	"height": 15,//子弹长度
+	"homingRange": 10,//追踪范围
+	"homingPower": 1,//追踪能力
+	"ammoMultiplier": 3,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药死亡特效
+	"backColor":3A3A50FF,//描边颜色
+ "frontColor":767A84FF,//中间颜色
+	}
+	"pyratite": {//硫
+	"type":"ArtilleryBulletType",//种类:火炮子弹
+	"speed": 5,//速度
+	"damage": 30,//伤害
+	"splashDamage":60,//范围伤害
+	"splashDamageRadius": 24.48,//伤害范围
+	"lifetime": 40.8,//弹药存在时间
+	"width": 15,//子弹宽度
+	"height": 15,//子弹长度
+	"makeFire": true//击中生成火焰
+	"status":"burning",//击中附加状态:燃烧
+ "statusDuration":960,//状态持续时间10秒
+	"ammoMultiplier": 4,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药死亡特效
+	"backColor":D37F47FF,//描边颜色
+ "frontColor":FFAA5FFF,//中间颜色
+	}
+	"plastanium": {//塑钢
+	"type":"ArtilleryBulletType",//种类:火炮子弹
+	"speed": 5,//速度
+	"damage": 30,//伤害
+	"splashDamage":60,//范围伤害
+	"splashDamageRadius": 24.48,//伤害范围
+	"lifetime": 40.8,//弹药存在时间
+	"width": 15,//子弹宽度
+	"height": 15,//子弹长度
+	"knockback":0.2,//击退
+	"ammoMultiplier": 2,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药死亡特效
+	"backColor":9CB664FF,//描边颜色
+ "frontColor":CBD97FFF,//中间颜色
+ "fragBullets":4,//弹片数量
+ "fragBullet":{
+	"width": 1,//子弹宽度
+ "height": 2,//子弹长度
+	"damage": 44,//伤害
+ "lifetime":30,//弹药存在时间
+ "speed":1,//子弹速度
+ "despawnEffect":"none"//弹药贴图,
+ "bulletSprite":"弹片",//子弹贴图
+ "backColor":9CB664FF,//描边颜色
+ "frontColor":CBD97FFF,//中间颜色
+ }
+	}
+	},
+	"requirements": [//建材
+	"copper/55"//铜
+	"lead/55"//铅
+	"graphite/45"//石墨
+	"titanium/35"//钛
+	],
+ "canOverdrive":true,//超频是否应用
+ "shootSound":"bang",//射击音效
+	"category": "turret",//游戏内分类:炮台
+	"research": {//科技
+ "parent": "hail",//前置科技
+ "objectives": [
+ {
+	"type": "SectorComplete",
+	"preset": "extractionOutpost"//地区
+	}
+	]
+ }
+}
+/*物品:
+copper
+ "backColor":B8705CFF,//描边颜色
+ "frontColor":D99D73FF,//中间颜色
+lead铅//
+ "backColor":6F687EFF,//描边颜色
+ "frontColor":AB99D3FF,//中间颜色
+metaglass玻璃//
+ "backColor":D0D0E0FF,//描边颜色
+ "frontColor":EBEEF5FF,//中间颜色
+graphite石墨//
+ "backColor":626F9BFF,//描边颜色
+ "frontColor":95ABD9FF,//中间颜色
+sand沙/
+coal煤/
+titanium钛//
+ "backColor":7575C8FF,//描边颜色
+ "frontColor":919FE7FF,//中间颜色
+thorium钍//
+ "backColor":CB8EBFFF,//描边颜色
+ "frontColor":F9A3C7FF,//中间颜色
+scrap废料//
+ "backColor":666666FF,//描边颜色
+ "frontColor":9B928BFF,//中间颜色
+silicon硅//
+ "backColor":3A3A50FF,//描边颜色
+ "frontColor":767A84FF,//中间颜色
+plastanium塑钢//
+ "backColor":9CB664FF,//描边颜色
+ "frontColor":CBD97FFF,//中间颜色
+phase-fabric相织布
+ "backColor":F19583FF,//描边颜色
+ "frontColor":FFD59EFF,//中间颜色
+surge-alloy浪涌合金
+ "backColor":D99F6BFF,//描边颜色
+ "frontColor":E8D174FF,//中间颜色
+spore-pod孢子/
+blast-compound爆炸物
+ "backColor":C85C51FF,//描边颜色
+ "frontColor":FF795EFF,//中间颜色
+pyratite硫化物
+ "backColor":D37F47FF,//描边颜色
+ "frontColor":FFAA5FFF,//中间颜色
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)
+速度×时间÷8=路程(格)

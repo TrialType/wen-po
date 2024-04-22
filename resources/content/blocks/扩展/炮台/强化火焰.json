@@ -1,0 +1,194 @@
+{
+	"type": "ItemTurret",//类型
+	"name": "强化火焰",//名字:多管炮
+	"health": 800,//生命值
+	"size": 2,//大小
+	"reload": 4,//射速=60÷真实射速
+	"range": 96,//自动攻击范围=range值÷8
+	"ammoPerShot": 1//发射一次需要多少弹药
+ "targetAir":false,//瞄准空军
+ "targetGround":true,//瞄准陆军
+	"consumes": {//消耗
+	"coolant": {//冷却剂
+ "amount": 0.2,//数量
+	"optional": true//是否当做加速液体:true是/false否
+	}
+	}
+	"shoot": {//射击模式设置
+	"shots": 1,//一次性发射子弹的数量
+	"shotDelay": 1,//射击间隔
+	"type": "ShootAlternate",//类型:射击交替
+ "barrels": 1,//炮口数量
+	"spread": 0//炮口间距
+	},
+	"xRand": 1,//每发子弹之间的距离
+ "ammoUseEffect":"none",//换弹特效
+ "coolEffect":"none",//液体加速特效
+	"inaccuracy": 1,//射击误差
+	"rotateSpeed": 12,//旋转速度
+	"shake": 0,//后摇程度
+	"recoil":2,//后坐力
+	"maxAmmo":30,//弹夹容量
+	"ammoTypes": {//可用弹药
+	"coal": {//煤
+	"type": "BulletType",
+	"speed": 10,//速度
+	"damage": 22.66,//伤害
+	"lifetime": 9.6,//弹药存在时间
+	"width": 30,//子弹宽度
+	"height": 15,//子弹长度
+	"pierce":true,//是否穿透单位
+	"pierceBuilding":true,//是否穿透建筑
+	"status":"burning",//击中附加状态:燃烧
+ "statusDuration": 360,//状态持续时间10秒
+	"ammoMultiplier": 3,//一个物品可变为几发弹药
+	"despawnEffect":"none"//弹药贴图,
+	"shootEffect": {//该子弹射击特效
+	"type": "ParticleEffect",
+	"particles": 13,
+	"lifetime": 33,
+	"sizeFrom": 2.5,
+	"sizeTo": 0,
+	"interp": "pow5Out",
+	"sizeInterp": "pow10In",
+	"length": 88,
+	"baseLength": 0,
+	"colorFrom": "FFB855FF",
+	"colorTo": "DB661CFF",
+	"cone": 12
+	},
+	"hitEffect": {
+	"type": "MultiEffect",
+	"effects": [
+	{
+	"type": "ParticleEffect",
+	"particles": 2,
+	"line": true,
+	"strokeFrom": 1.3,
+	"strokeTo": 0,
+	"lenFrom": 8,
+	"lenTo": 8,
+	"length": 24,
+	"baseLength": 0,
+	"lifetime": 15,
+	"colorFrom": "FFB855FF",
+	"colorTo": "DB661CFF",
+	"cone": 23
+	},
+	{
+	"type": "ParticleEffect",
+	"particles": 4,
+	"lifetime": 10,
+	"sizeFrom": 3,
+	"sizeTo": 0,
+	"colorFrom": "FFB855FF",
+	"colorTo": "DB661CFF"
+	},
+	],
+	},
+	},
+	"pyratite": {//硫
+	"type": "BulletType",
+	"speed": 10,//速度
+	"damage": 80,//伤害
+	"lifetime": 9.6,//弹药存在时间
+	"width": 30,//子弹宽度
+	"height": 15,//子弹长度
+	"pierce":true,//是否穿透单位
+	"pierceBuilding":true,//是否穿透建筑
+	"status":"burning",//击中附加状态:燃烧
+ "statusDuration": 720,//状态持续时间10秒
+	"ammoMultiplier": 6,//一个物品可变为几发弹药
+	"shootEffect": "shootSmall"//弹药贴图
+	"despawnEffect":"none"//弹药贴图,
+	"shootEffect": {//该子弹射击特效
+	"type": "ParticleEffect",
+	"particles": 13,
+	"lifetime": 33,
+	"sizeFrom": 2.5,
+	"sizeTo": 0,
+	"interp": "pow5Out",
+	"sizeInterp": "pow10In",
+	"length": 88,
+	"baseLength": 0,
+	"colorFrom": "FFB855FF",
+	"colorTo": "DB661CFF",
+	"cone": 12
+	},
+	"hitEffect": {
+	"type": "MultiEffect",
+	"effects": [
+	{
+	"type": "ParticleEffect",
+	"particles": 2,
+	"line": true,
+	"strokeFrom": 1.3,
+	"strokeTo": 0,
+	"lenFrom": 8,
+	"lenTo": 8,
+	"length": 24,
+	"baseLength": 0,
+	"lifetime": 15,
+	"colorFrom": "FFB855FF",
+	"colorTo": "DB661CFF",
+	"cone": 23
+	},
+	{
+	"type": "ParticleEffect",
+	"particles": 4,
+	"lifetime": 10,
+	"sizeFrom": 3,
+	"sizeTo": 0,
+	"colorFrom": "FFB855FF",
+	"colorTo": "DB661CFF"
+	},
+	],
+	},
+	},
+	},
+	"requirements": [//建材
+	"copper/55"//铜
+	"lead/55"//铅
+	"graphite/45"//石墨
+	"titanium/35"//钛
+	],
+ "canOverdrive":true,//超频是否应用
+ "shootSound":"flame",//射击音效
+ "heatColor":FF3000FF,//过热颜色
+	"category": "turret",//游戏内分类:炮台
+	"research": "scorch"//科技
+	"research": {//科技
+ "parent": "foreshadow",//前置科技
+ "objectives": [
+ {
+	"type": "SectorComplete",
+	"preset": "ruinousShores"//地区
+	}
+	]
+ }
+}
+/*物品:
+copper铜/D99D73FF/B8705CFF
+lead铅/AB99D3FF/6F687EFF
+metaglass玻璃/EBEEF5FF/D0D0E0FF
+graphite石墨/95ABD9FF/626F9BFF
+sand沙/
+coal煤/
+titanium钛/919FE7FF/7575C8FF
+thorium钍/F9A3C7FF/CB8EBFFF
+scrap废料/9B928BFF/666666FF
+silicon硅/767A84FF/3A3A50FF
+plastanium塑钢/CBD97FFF/9CB664FF
+phase-fabric相织布/FFD59EFF/F19583FF
+surge-alloy浪涌合金/E8D174FF/D99F6BFF
+spore-pod孢子/
+blast-compound爆炸物/FF795EFF/C85C51FF
+pyratite硫化物/FFAA5FFF/D37F47FF
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

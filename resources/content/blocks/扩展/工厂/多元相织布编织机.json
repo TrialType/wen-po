@@ -1,0 +1,107 @@
+{
+"name":"多元相织布编织机"
+//此工厂在游戏中的名字
+	"type": "GenericCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂GenericSmelter
+	"health": 740,
+	//生命值
+	"outputItem": {"item": "phase-fabric", "amount": 6},
+	//输出物品为:物品 3
+	"itemCapacity": 120,
+	//工厂物品的最大容量
+	"size": 4,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": false,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 30,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//粒子特效,无
+	"craftEffect":"none",
+	//运行特效,无
+"drawer":[
+         {
+	        "type": "DrawDefault"
+	        //识别此建筑本体贴图
+	        },
+         {
+	        "type":"DrawWeave"
+         },
+         ]
+//织布机特效
+		"updateEffectChance":0.04
+	//工作特效数量
+	"consumes": {
+	//运行需求:
+		"power":20
+	"items": {	
+	"items": [
+	//要物品:
+	{ "item": "thorium", "amount": 2 },
+	//钍
+	{ "item": "sand", "amount": 5 },
+	//沙
+	]
+		}
+	},
+		"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "lead", "amount": 200 },
+		//铅:85
+		{ "item": "graphite", "amount": 120 }
+		//石墨:35
+		{ "item": "thorium", "amount": 120 },
+		//钍
+		{ "item": "plastanium", "amount": 120 },
+		//塑钢
+		{ "item": "phase-fabric", "amount": 100 },
+		//布
+		{ "item": "titanium", "amount": 90 },
+		//钛
+		{ "item": "silicon", "amount": 180 },
+		//硅
+		{ "item": "surge-alloy", "amount": 40 },
+		//合金
+		],
+		
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "多重相织布编织器"
+//科技:大硅
+}
+/*物品:
+copper铜
+lead铅
+metaglass玻璃
+graphite石墨
+sand沙
+coal煤
+titanium钛
+thorium钍
+scrap废料
+silicon硅
+plastanium塑钢
+phase-fabric相织布
+surge-alloy浪涌合金
+spore-pod孢子
+blast-compound爆炸物
+pyratite硫化物
+
+
+
+
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

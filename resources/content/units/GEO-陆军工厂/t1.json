@@ -1,0 +1,146 @@
+{
+ "type": "tank", //类别:坦克
+ "name": "点射",
+ "description": "远程火炮组 A-1", //名字
+ //介绍
+ "hitSize": 8,
+ //碰撞箱=根号下长×宽 ÷4
+ "health": 160,
+ //生命值
+ "armor": 1,
+ //护甲值 1:1抵消伤害
+ "speed": 1,
+ //移动速度
+ "omniMovement": false,
+ //是否万向移动
+ "rotateMoveFirst": false,
+ //是否先掉头到前进方向后在移动
+ "rotateSpeed": 4,
+ //旋转速度
+ "treadRects": [
+  //履带设置
+  {
+   "x": 7,
+   //履带横轴
+   "y": -27,
+   //履带纵轴
+   "width": 11,
+   //履带宽
+   "height": 54//履带高
+  }
+ ],
+ "treadPullOffset": 0,
+ "healColor": "FF5B5B",
+ //被治愈颜色
+ "outlineColor": "383848",
+ //描边颜色
+ "hovering": false,
+ //悬浮
+ "canDrown": true,
+ //溺水
+ "drownTimeMultiplier": 4,
+ //溺水倍率 越大越慢
+ "faceTarget": true,
+ //转向锁定
+ "range": 256,
+ //索敌范围
+ "maxRange": 256,
+ //武器最大射程
+ "targetAir": true,
+ //对空
+ "targetGround": true,
+ //对地
+ "faceTarget": false,
+ //攻击时面向敌人
+ "weapons": [
+  //武器
+  {
+   //主武器
+   "name": "点射",
+   //读取武器贴图
+   "range": 256,
+   //攻击范围
+   "reload": 240,
+   //攻速
+   "x": 0,
+   //定位
+   "y": 0,
+   //定位
+   "shootY": -0.5,
+   //炮口定位
+   "cooldownTime": 90,
+   //过热冷却
+   "inaccuracy": 2,
+   //射击误差 度
+   "recoil": 2,
+   //武器后摇
+   "recoilTime": 180,
+   //武器后摇时间
+   "shake": 2,
+   //抖动与抖动时长 (囧,谁的馊主意)
+   "rotate": true,
+   //允许武器独自旋转
+   "rotateSpeed": 3,
+   //武器旋转速度
+   "shootSound": "点射",
+   //武器音效
+   "mirror": false,
+   //镜像
+   "outlineColor": "383848",
+   //描边颜色
+   "top": true,
+   //
+   "bullet": {
+    "type": "pointBulletType",
+    //子弹类型:恶兆
+    "damage": 32,
+    //伤害
+    "pierce": true,
+    //是否穿透
+    "pierceBuilding": true,
+    //是否穿透建筑
+    "pierceCap": 1,
+    //穿透数量
+    "knockback": 1,
+    //击退
+    "shootEffect": "none",
+    //炮口特效
+    "ammoMultiplier": 1,
+    //一个物品变几个弹药
+    "speed": 600,
+    //子弹速度
+    "lifetime": 0.426,
+    //弹药存在时间
+    "hitShake": 7,
+    //击中震动
+    "trailSpacing": 20,
+    //拖尾特效间隔
+    "collidesTiles": true,
+    //对地伤害
+    "collidesAir": true//对空中有伤害
+    "smokeEffect": "none",
+    //射击烟雾特效
+    "buildingDamageMultiplier": 1.28,
+    //打建筑伤害倍率
+    "trailEffect": "none",
+    //拖尾特效
+    "hitEffect": "smokeCloud"
+    "despawnEffect": "smokeCloud"
+    /*开火特效*/
+   }
+   "parts": [
+    {
+     "type": "RegionPart",
+     "mirror": false,
+     //镜像
+     "suffix": "-管",
+     //贴图读取
+     "under": false,
+     "moveY": -1,
+     "heatProgress": "recoil",
+     "progress": "recoil"
+    }
+   ]
+  }
+ ]
+}

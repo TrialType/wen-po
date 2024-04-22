@@ -1,0 +1,79 @@
+{
+"name":"孢子冲压机"
+//此工厂在游戏中的名字
+	"type": "GenericCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂AttributeCrafter
+	"health": 740,
+	//生命值
+	"outputLiquid": {"liquid": "oil", "amount": 1 },
+	//输出液体量为:9.321×60
+	"itemCapacity": 60,
+	//工厂物品的最大容量
+	"LiquidCapacity": 260
+	//液体容量
+	"size": 4,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": true,
+	//工厂是否可以装载液体,是；false:否
+	"hasItems": true,
+	//工厂是否可以装载物品,是；false:否
+	"craftTime": 20,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//常驻粒子特效,无none,有smeltsmoke
+	"craftEffect":"none",
+	//运行粒子特效,无none,有smeltsmoke
+"drawer": {
+		"type": "DrawMulti",
+		"drawers": [
+			"DrawDefault",
+			{
+				"type": "DrawLiquidRegion",
+				"drawLiquid": "slag",
+				"suffix": "-liquid"
+			}
+		]
+	},
+	//只输出液体工厂特效
+		"updateEffectChance":0.04
+	//工作特效数量
+	"consumes": {
+	//需要供给的资源:
+	"power": 6
+	//要电:2.5×60=150
+	"items": {	
+	"items": [
+	//要物品:
+	"spore-pod/8"
+	]
+		}
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "titanium", "amount":55 },
+		//钛:85
+		{ "item": "lead", "amount": 200 },
+		//铅:120
+		{ "item": "graphite", "amount": 90 },
+		//石墨:65
+		{ "item": "plastanium", "amount": 80 },
+		//塑钢
+		{ "item": "thorium", "amount": 150 },
+		//钍
+		{ "item": "silicon", "amount": 130 }
+		//硅
+		{ "item": "surge-alloy", "amount": 15 }
+		//合金
+		{ "item": "metaglass", "amount": 100 },
+		//玻璃
+		],
+	"category": "crafting",
+	//游戏内分类:工厂(制作)
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "孢子挤压机"
+//科技:大硅(之后)
+}

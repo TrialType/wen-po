@@ -1,0 +1,28 @@
+{
+	"type": "Conveyor",
+	//种类:普通传送带
+	//ArmoredConveyor装甲传送带
+	//StackConveyor塑钢传送带
+	"name": "石墨传送带",
+	//名字
+	"health": 55,
+	//生命值
+	"ItemCapacity":3,
+	//物容
+	"requirements": [
+	//建材
+	      "graphite/1"
+	      //石墨
+       ],
+	"speed": 0.06,
+	//运输速度
+	//算法:speed数值×ItemCapacity数值×60
+	"displayedSpeed": 8.1
+	//游戏里速度显示
+	"buildCostMultiplier":1
+	//建材消耗倍率
+	"category": "distribution",
+ //建筑类型:物品运输
+ "research":"conveyor",
+ //科技:初代核心
+}

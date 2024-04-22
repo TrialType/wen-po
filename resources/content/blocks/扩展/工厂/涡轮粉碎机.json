@@ -1,0 +1,72 @@
+{
+"name":"涡轮粉碎机"
+//此工厂在游戏中的名字
+	"type": "GenericCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂GenericSmelter
+	"health": 240,
+	//生命值
+	"outputItem": {"item": "sand", "amount": 5.5	},
+	//输出物品为:物品 3
+	"itemCapacity": 55,
+	//工厂物品的最大容量
+	"size": 2,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": false,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 60,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//粒子特效,无
+	"craftEffect":"none",
+	//运行特效,无
+	"drawer": {
+          "type": "DrawMulti",
+		        "drawers": [
+			       "DrawDefault",
+			       {
+				      "type": "DrawRegion",
+				      "suffix": "-转",
+			      	"spinSprite": true,
+	      			"rotateSpeed": 12
+		       	},
+		       	{
+			      	"type": "DrawRegion",
+		      		"suffix": "-顶"
+		       	}
+	        	]
+         	},
+	"consumes": {
+	//运行需求:
+	"power":2
+	"items": {	
+	"items": [
+	//要物品:
+	{ "item": "scrap", "amount": 8 },
+	//煤炭2;
+	]
+		}
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "copper", "amount":100 },
+		//铜:100
+		{ "item": "lead", "amount": 100 },
+		//铅:85
+		{ "item": "silicon", "amount": 40 }
+		//硅:35
+		{ "item": "graphite", "amount": 50 },
+		//石墨
+		],
+		
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "pulverizer"
+//科技:大硅
+}

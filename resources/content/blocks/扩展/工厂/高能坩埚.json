@@ -1,0 +1,100 @@
+{
+"name":"高能坩埚"
+//此工厂在游戏中的名字
+	"type": "AttributeCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂AttributeCrafter
+	"health": 640,
+	//生命值
+	"outputItem": {"item": "silicon", "amount":9.5 	},
+	//输出物品为:物品 3
+	"itemCapacity": 95,
+	//工厂物品的最大容量
+	"size": 4,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": false,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 30,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//常驻粒子特效,无none,有smeltsmoke
+	"craftEffect":"none",
+	//运行粒子特效,无none,有smeltsmoke
+"drawer":[
+//贴图特效
+	        {
+	        "type": "DrawDefault"
+	        //识别此建筑本体贴图
+	        },
+	        {
+         "type": "DrawFlame",
+         //识别此建筑特效贴图
+         "flameRadius": 0.001,
+         //整体半径 
+         "flameRadiusIn": 0.001,
+         //里面白色的圆心的半径
+         "flameRadiusScl": 0.001,           
+         //外面有颜色的圆边的半径
+         "flameRadiusMag": 0.001,
+         //整体缩放时间
+         "flameRadiusInMag": 0.001,
+         //白色圆点缩放时间
+         "flameColor": "FFF999"
+         //效果颜色
+	        }
+        	]
+		"updateEffectChance":0.04
+	//工作特效数量
+	"consumes": {
+	//运行需求:
+	"power": 8,
+	//要电:8×60=480
+	"items": {	
+	"items": [
+	//要物品:
+	{ "item": "coal", "amount": 4 },
+	//煤炭3;
+	{ "item": "sand", "amount": 6},
+		//沙子5;
+	{ "item": "pyratite", "amount": 1.8 },
+		//硫1.155;
+	]
+		}
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "plastanium", "amount":45 },
+		//塑钢:45
+		{ "item": "surge-alloy", "amount": 30 },
+		//合金:15
+		{ "item": "silicon", "amount": 85 },
+		//硅:85
+		{ "item": "titanium", "amount": 160 },
+		//钛:160
+		{ "item": "metaglass", "amount": 95 },
+		//玻璃:95,
+		{ "item": "thorium", "amount": 80 }
+		//钍
+		],
+		"attribute":"heat"
+		//读取地板,所有热源
+	"baseEfficiency":1
+	//工厂基本效率,游戏内里百分比
+	"boostScale":0.083345
+	//一格增加的效率,
+	//计算效率按照效率最低的地板计算
+	//1=50%  0.1=5%  0.01=0.5%
+	"maxHeatBoost":2
+	//最大提升效率(倍数)
+	//1为100% 2为200% 以此类推
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "silicon-crucible"
+//科技:大硅
+}

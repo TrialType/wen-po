@@ -1,0 +1,91 @@
+{
+"name":"多重冲压机"
+//此工厂在游戏中的名字
+	"type": "GenericCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂AttributeCrafter
+	"health": 640,
+	//生命值
+	"outputItem": {"item": "graphite", "amount": 12	},
+	//输出物品为:石墨 3
+	"itemCapacity": 75,
+	//工厂物品的最大容量
+	"liquidCapacity":48
+	"size": 4,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": true,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 30,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//粒子特效,无
+	"craftEffect":"none",
+	//运行特效,无
+	"consumes": {
+	//运行需求:
+		"power": 2.3,
+	//要电:2.5×60=150
+	"liquid":"oil/0.2"
+	"items": [
+	//要物品:
+	"coal/16"
+	//煤炭2;
+	]
+		}
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "titanium", "amount":120 },
+		//钛:100
+		{ "item": "lead", "amount": 120 },
+		//铅:120
+		{ "item": "graphite", "amount": 65 },
+		//石墨:65
+		{ "item": "plastanium", "amount": 65 },
+		//塑钢:65
+		{ "item": "silicon", "amount": 65 },
+		//硅:65
+		{ "item": "surge-alloy", "amount": 30 }
+		//合金
+		{ "item": "thorium", "amount": 40 }
+		//钍
+		],
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "multi-press"
+//科技:大石墨
+}
+/*物品:
+copper铜
+lead铅
+metaglass玻璃
+graphite石墨
+sand沙
+coal煤
+titanium钛
+thorium钍
+scrap废料
+silicon硅
+plastanium塑钢
+phase-fabric相织布
+surge-alloy浪涌合金
+spore-pod孢子
+blast-compound爆炸物
+pyratite硫化物
+
+
+
+
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)

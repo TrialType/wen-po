@@ -1,0 +1,34 @@
+{
+    "type": "ItemBridge",
+    //类别:带桥
+    "name":"硅传送带桥",
+    //名字
+    "ItemCapacity":10
+	   //物容
+	   "health": 55,
+	   //生命值
+	   "consumes": {"power": 0.15},
+    //耗电
+    "requirements": [
+    //建材
+    { "amount": 5, "item": "lead" },
+    //铅
+    { "amount": 5, "item": "copper" },
+    //铜
+    { "amount": 10, "item": "silicon" }
+    //硅
+    ],
+    "range": 8,
+    //最大连接距离
+    "displayedSpeed": 21
+    //游戏里显示的速度
+    "placeableLiquid":false
+    //是否可以放在水上(包括深水)是
+    //false:否
+    "transportTime": 2,
+    //运输速度
+    "category": "distribution",
+    //建筑类型:物品运输
+    "research": "bridge-conveyor",
+    //科技
+}

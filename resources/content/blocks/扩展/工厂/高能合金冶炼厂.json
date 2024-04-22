@@ -1,0 +1,133 @@
+{
+"name":"高能合金冶炼厂"
+//此工厂在游戏中的名字
+	"type": "AttributeCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂AttributeCrafter
+	"health": 1900,
+	//生命值
+	"outputItem": {"item": "surge-alloy", "amount": 14	},
+	//输出物品为:物品 3
+	"itemCapacity": 60,
+	//工厂物品的最大容量
+	"size": 6,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": false,
+	//工厂是否需要用到液体,是；false:否
+	"hasItems": true,
+	//工厂是否需要用到物品,是；false:否
+	"craftTime": 30,
+	//工厂运行一次所用的时间,60:1秒
+	"updateEffect":"none",
+	//常驻粒子特效,无none,有smeltsmoke
+	"craftEffect":"none",
+	//运行粒子特效,无none,有smeltsmoke
+"drawer":[
+//贴图特效
+	        {
+	        "type": "DrawDefault"
+	        //识别此建筑本体贴图
+	        },
+	        {
+         "type": "DrawFlame",
+         //识别此建筑特效贴图
+         "flameRadius": 0.001,
+         //整体半径 
+         "flameRadiusIn": 0.001,
+         //里面白色的圆心的半径
+         "flameRadiusScl": 0.001,           
+         //外面有颜色的圆边的半径
+         "flameRadiusMag": 0.001,
+         //整体缩放时间
+         "flameRadiusInMag": 0.001,
+         //白色圆点缩放时间
+         "flameColor": "FFF999"
+         //效果颜色
+	        }
+        	]
+		"updateEffectChance":0.04
+	//工作特效数量
+	"consumes": {
+	//运行需求:
+	"power": 18,
+	//要电:8×60=480
+	"items": {	
+	"items": [
+	//要物品:
+{ "item": "copper", "amount": 3 },
+	//铜
+	{ "item": "lead", "amount": 3 }	
+		//铅
+	{ "item": "titanium", "amount":  3 }	
+		//钛
+	{ "item": "thorium", "amount": 4 },
+	//钍
+	{ "item": "silicon", "amount": 4 },
+	//硅
+	]
+		}
+	},
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+	{ "item": "titanium", "amount":240 },
+		//钛:85
+		{ "item": "lead", "amount": 280 },
+		//铅:120
+		{ "item": "graphite", "amount": 200 },
+		//石墨:65
+		{ "item": "plastanium", "amount": 240 },
+		//塑钢
+		{ "item": "thorium", "amount": 180 },
+		//钍
+		{ "item": "silicon", "amount": 240 }
+		//硅
+		{ "item": "surge-alloy", "amount": 90 }
+		//合金
+		{ "item": "phase-fabric", "amount": 100 },
+		//布
+		],
+		"attribute":"heat"
+		//读取地板,所有热源
+	"baseEfficiency":1
+	//工厂基本效率,游戏内里百分比
+	"boostScale":0.0373
+	//一格增加的效率,
+	//计算效率按照效率最低的地板计算
+	//1=50%  0.1=5%  0.01=0.5%
+	"maxHeatBoost":2
+	//最大提升效率(倍数)
+	//1为100% 2为200% 以此类推
+	"category": "crafting",
+	//游戏内分类:制作
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "热能合金冶炼厂"
+//科技:大硅
+}
+/*物品:
+copper铜
+lead铅
+metaglass玻璃
+graphite石墨
+sand沙
+coal煤
+titanium钛
+thorium钍
+scrap废料
+silicon硅
+plastanium塑钢
+phase-fabric相织布
+surge-alloy浪涌合金
+spore-pod孢子
+blast-compound爆炸物
+pyratite硫化物
+
+液体:
+水:water
+矿渣:slag
+石油:oil
+冷冻液:cryofluid
+方解液:arkycite
+镓:gallium(隐藏液体)
