@@ -1,6 +1,7 @@
 package wen.WType;
 
 import arc.struct.ObjectMap;
+import arc.struct.Seq;
 import mindustry.content.Planets;
 import mindustry.type.Item;
 import mindustry.type.ItemSeq;
@@ -15,18 +16,28 @@ public class MoreTechResearchDialog extends ResearchDialog {
     public void rebuildItems() {
         items = new ItemSeq() {
             final ObjectMap<Sector, ItemSeq> cache = new ObjectMap<>();
-            {
 
-                Planet rootPlanet = lastNode.planet != null ? lastNode.planet : content.planets().find(p -> p.techTree == lastNode);
-                if (rootPlanet == null) rootPlanet = Planets.serpulo;
-                for (Sector sector : rootPlanet.sectors) {
-                    if (sector.hasBase()) {
-                        ItemSeq cached = sector.items();
-                        cache.put(sector, cached);
-                        cached.each((item, amount) -> {
-                            values[item.id] += Math.max(amount, 0);
-                            total += Math.max(amount, 0);
-                        });
+            {
+                Seq<Planet> rootPlanet = new Seq<>();
+                if (lastNode.planet != null) {
+                    rootPlanet.add(lastNode.planet);
+                }
+                content.planets().each(p -> {
+                    if (p.techTree == lastNode) {
+                        rootPlanet.add(p);
+                    }
+                });
+                if (rootPlanet.isEmpty()) rootPlanet.add(Planets.serpulo);
+                for (Planet p : rootPlanet) {
+                    for (Sector sector : p.sectors) {
+                        if (sector.hasBase()) {
+                            ItemSeq cached = sector.items();
+                            cache.put(sector, cached);
+                            cached.each((item, amount) -> {
+                                values[item.id] += Math.max(amount, 0);
+                                total += Math.max(amount, 0);
+                            });
+                        }
                     }
                 }
             }
