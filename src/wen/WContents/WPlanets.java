@@ -57,10 +57,10 @@ public class WPlanets {
 
             techTree = Planets.serpulo.techTree;
 
-            TechTree.TechNode g = TechTree.nodeRoot("f", Blocks.coreShard, () -> {
+            TechTree.TechNode g = TechTree.nodeRoot("GEOTech1", WBlocks.defaultCore, () -> {
             });
             g.planet = GEO;
-            g = TechTree.nodeRoot("s", WBlocks.test, () -> {
+            g = TechTree.nodeRoot("GEOTech2", WBlocks.test, () -> {
             });
             g.planet = GEO;
         }};
