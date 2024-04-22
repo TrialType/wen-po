@@ -55,8 +55,12 @@ public class WPlanets {
                 r.showSpawns = false;
             };
 
-            techTree = TechTree.nodeRoot("", WBlocks.test, () -> {
+            TechTree.TechNode g = TechTree.nodeRoot("f", Blocks.coreShard, () -> {
             });
+            g.planet = GEO;
+            g = TechTree.nodeRoot("s", WBlocks.test, () -> {
+            });
+            g.planet = GEO;
         }};
     }
 }
