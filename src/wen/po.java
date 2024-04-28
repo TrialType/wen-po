@@ -10,8 +10,6 @@ import wen.WContents.WPlanets;
 import wen.WType.MoreTechResearchDialog;
 
 public class po extends Mod {
-    public po() {}
-
     @Override
     public void loadContent() {
         Events.on(EventType.ClientLoadEvent.class, e -> Time.runTask(10f, () -> Vars.ui.research = new MoreTechResearchDialog()));
