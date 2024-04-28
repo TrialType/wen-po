@@ -15,13 +15,12 @@ public class WBlocks {
 
     public static void load() {
         test = new Block("test") {{
-            requirements(Category.defense, ItemStack.empty);
+            requirements(Category.effect, ItemStack.empty);
         }};
         GEO_defaultCore = new CoreBlock("geo-default-core") {{
-            requirements(Category.effect, BuildVisibility.editorOnly, with(Items.titanium, 100, Items.thorium, 100, Items.plastanium, 100));
+            requirements(Category.effect, with(Items.titanium, 100, Items.thorium, 100, Items.plastanium, 100));
             alwaysUnlocked = true;
 
-            isFirstTier = true;
             unitType = UnitTypes.beta;
             health = 520;
             itemCapacity = 200;
