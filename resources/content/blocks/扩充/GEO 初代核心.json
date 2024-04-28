@@ -1,0 +1,16 @@
+{
+    "type": "coreBlock",
+    "name": "GEO初代核心",
+    "size": 3,
+    "health": 520,
+    "description": "为文明继续发展而研发的行核心",
+    "itemCapacity": 200,
+    "unitType": "beta",
+    "category": "effect",
+    "requirements": [
+        "titanium/100",
+        "thorium/100",
+        "plastanium/100"
+    ],
+    "unitCapModifier": 5
+}
