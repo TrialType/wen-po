@@ -18,16 +18,16 @@ public class WBlocks {
             requirements(Category.defense, ItemStack.empty);
         }};
         GEO_defaultCore = new CoreBlock("geo-default-core") {{
-            requirements(Category.effect, BuildVisibility.editorOnly, with(Items.copper, 1000, Items.lead, 800));
+            requirements(Category.effect, BuildVisibility.editorOnly, with(Items.titanium, 100, Items.thorium, 100, Items.plastanium, 100));
             alwaysUnlocked = true;
 
             isFirstTier = true;
-            unitType = UnitTypes.alpha;
-            health = 1100;
-            itemCapacity = 4000;
+            unitType = UnitTypes.beta;
+            health = 520;
+            itemCapacity = 200;
             size = 3;
 
-            unitCapModifier = 8;
+            unitCapModifier = 5;
         }};
     }
 }
