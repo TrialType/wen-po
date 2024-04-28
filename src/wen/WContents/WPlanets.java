@@ -57,7 +57,7 @@ public class WPlanets {
 
             techTree = Planets.serpulo.techTree;
 
-            TechTree.TechNode g = TechTree.nodeRoot("GEOTech1", WBlocks.defaultCore, () -> {
+            TechTree.TechNode g = TechTree.nodeRoot("GEOTech1", WBlocks.GEO_defaultCore, () -> {
             });
             g.planet = GEO;
             g = TechTree.nodeRoot("GEOTech2", WBlocks.test, () -> {

@@ -11,13 +11,13 @@ import mindustry.world.meta.BuildVisibility;
 import static mindustry.type.ItemStack.with;
 
 public class WBlocks {
-    public static Block test, defaultCore;
+    public static Block test, GEO_defaultCore;
 
     public static void load() {
         test = new Block("test") {{
             requirements(Category.defense, ItemStack.empty);
         }};
-        defaultCore = new CoreBlock("default-core") {{
+        GEO_defaultCore = new CoreBlock("geo-default-core") {{
             requirements(Category.effect, BuildVisibility.editorOnly, with(Items.copper, 1000, Items.lead, 800));
             alwaysUnlocked = true;
 
