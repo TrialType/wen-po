@@ -33,8 +33,9 @@ public class WBlocks {
             alwaysUnlocked = true;
 
             unitType = UnitTypes.beta;
+            requiresCoreZone = true;
             health = 520;
-            itemCapacity = 200;
+            itemCapacity = 0;
             size = 3;
 
             unitCapModifier = 5;
