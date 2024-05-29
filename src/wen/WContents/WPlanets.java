@@ -3,7 +3,6 @@ package wen.WContents;
 import arc.graphics.Color;
 import mindustry.content.Blocks;
 import mindustry.content.Planets;
-import mindustry.content.TechTree;
 import mindustry.game.Team;
 import mindustry.graphics.Pal;
 import mindustry.graphics.g3d.HexMesh;
@@ -56,13 +55,6 @@ public class WPlanets {
             };
 
             techTree = Planets.serpulo.techTree;
-
-            TechTree.TechNode g = TechTree.nodeRoot("GEOTech1", WBlocks.GEO_defaultCore, () -> {
-            });
-            g.planet = GEO;
-            g = TechTree.nodeRoot("GEOTech2", WBlocks.test, () -> {
-            });
-            g.planet = GEO;
         }};
     }
 }

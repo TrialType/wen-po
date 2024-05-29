@@ -16,16 +16,16 @@ public class WBlocks {
         test = new Block("test") {{
             requirements(Category.effect, ItemStack.empty);
         }};
-        GEO_defaultCore = new CoreBlock("geo-default-core") {{
-            requirements(Category.effect, with(Items.titanium, 100, Items.thorium, 100, Items.plastanium, 100));
-            alwaysUnlocked = true;
-
-            unitType = UnitTypes.beta;
-            health = 520;
-            itemCapacity = 200;
-            size = 3;
-
-            unitCapModifier = 5;
-        }};
+//        GEO_defaultCore = new CoreBlock("geo-default-core") {{
+//            requirements(Category.effect, with(Items.titanium, 100, Items.thorium, 100, Items.plastanium, 100));
+//            alwaysUnlocked = true;
+//
+//            unitType = UnitTypes.beta;
+//            health = 520;
+//            itemCapacity = 200;
+//            size = 3;
+//
+//            unitCapModifier = 5;
+//        }};
     }
 }

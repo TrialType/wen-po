@@ -14,7 +14,7 @@ main: "wen.po"
 description: "在无数岁月长河中，mindustry还是决定继续向前\n模组对原版进行了扩展，并对其进行了扩充\nQQ群827268162"
 
 #the mod version
-version: 0。1.1
+version: 0.1.1
 
 #the minimum game build required to run this mod
 minGameVersion: 146
