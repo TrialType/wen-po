@@ -11,6 +11,7 @@ import mindustry.mod.*;
 import wen.WContents.TechTrees;
 import wen.WContents.WBlocks;
 import wen.WContents.WPlanets;
+import wen.WEntities.WBlocks.BuildCoreBlock;
 import wen.WType.MoreTechResearchDialog;
 
 import static mindustry.Vars.mods;
@@ -18,6 +19,7 @@ import static mindustry.Vars.mods;
 public class po extends Mod {
     @Override
     public void loadContent() {
+        ClassMap.classes.put("BuildCoreBlock", BuildCoreBlock.class);
         WBlocks.load();
         WPlanets.load();
         TechTrees.load();
