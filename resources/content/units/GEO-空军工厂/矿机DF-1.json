@@ -1,0 +1,40 @@
+{
+  "type": "flying",//飞机
+  "description": "优质的采矿飞机",//介绍
+  "lowAltitude": false,//低空飞行
+  "research": "GEO-空军工厂",//研究
+  "defaultController":"MinerAI",//ai
+  "mineltems": [//可挖矿物
+      "copper",
+      "lead"
+      ],
+  "playerControllable": false,//玩家附身
+  "speed": 2.5,//速度
+  "mineSpeed": 5,//采矿速度
+  "rotateSpeed": 10.5,//转弯速度
+  "mineTier": 3,//矿机等级
+  "accel": 0.3,//加速速度
+  "drag": 0.5,//惯性
+  "trailLength": 10,//拖尾长度
+  "mineHardnessScaling": true,//
+  "mineWalls": true,//开采墙壁矿
+  "outlineColor": "36363c",//轮廓色
+  "engineColor": "A8FF80FF",//尾焰颜色
+  "trailColor": "A8FF80FF",//拖尾颜色
+  "flying": true,//飞行
+  "name": "矿机DF-1",//名字
+  "health": 160,//生命值
+  "hitSize": 8,//碰撞箱
+  "armor": 1,//护甲值
+  "itemCapacity": 16,//物容
+  "enaineOffset": 6//尾焰偏移
+  "engineSize": 2,//尾焰大小
+  "engines": [//尾焰定位
+    {
+			"x": 0,
+			"y": -8,
+			"radius": 2,//尾焰半径
+			"rotation": -90//尾焰角度
+	},
+	]
+}

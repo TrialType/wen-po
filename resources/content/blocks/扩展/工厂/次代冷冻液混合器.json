@@ -1,0 +1,74 @@
+{
+"name":"次代冷冻液混合器"
+//此工厂在游戏中的名字
+	"type": "GenericCrafter",
+	//类别普通工厂GenericCrafter
+	//地形工厂AttributeCrafter(注 这个接口在V7已经没用了 这是V6及之前版本的东西)
+	"health": 360,
+	//生命值
+	"outputLiquid": {"liquid": "cryofluid", "amount": 1	},
+	//输出液体量为:3×60
+	//液体输出   "outputLiquid": {"Liquid": "cryofluid", "amount": 3	},
+	"itemCapacity": 30,
+	//工厂物品的最大容量
+	"liquidCapacity": 480,
+ //液体容量
+	"size": 3,
+	//建筑大小
+	"hasPower": true,
+	//工厂是否需要用到电力,是；false:否
+	"hasLiquids": true,
+	//工厂是否可以装载液体,是；false:否
+	"hasItems": true,
+	//工厂是否可以装载物品,是；false:否
+	"craftTime": 60,
+	//工厂进行一次生产的时间,60:1秒
+	"consumes": {
+	//需要使用(供给)的原料:
+	"power": 4
+	//要电:2.5×60=150
+	"liquid": "water/1"
+	"items": [
+	//物品:
+	{ "item": "titanium", "amount": 3 },
+		]
+  }
+	"requirements": [
+	//建造此建筑需要什么材料,各多少
+		{ "item": "titanium", "amount":120 },
+		//钛:100
+		{ "item": "lead", "amount": 120 },
+		//铅:120
+		{ "item": "graphite", "amount": 65 },
+		//石墨:65
+		{ "item": "plastanium", "amount": 65 },
+		//塑钢:65
+		{ "item": "silicon", "amount": 65 },
+		//硅:65
+		{ "item": "thorium", "amount": 40 },
+		//钍
+		{ "item": "metaglass", "amount": 100 },
+		//玻璃
+		],
+	"drawer":{"type":"DrawMulti",
+	"drawers":[
+	{"type": "DrawRegion",
+	"suffix": "-bottom"
+	},
+	{"type": "DrawLiquidTile",
+	"drawLiquid": "water",
+	},
+	{"type": "DrawLiquidTile",
+	"drawLiquid": "cryofluid",
+	},
+	{"type": "DrawDefault",
+    "suffix": "次代冷冻液混合器",
+    },
+		]	}	
+	"category": "crafting",
+	//游戏内分类:工厂(制作’
+	"ambientSound":"smelter",
+	//音效:冶炼厂
+	"research": "cryofluid-mixer"
+//科技:大硅(之后)
+}

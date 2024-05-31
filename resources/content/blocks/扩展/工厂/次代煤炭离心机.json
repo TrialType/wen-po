@@ -1,17 +1,17 @@
 {
-"name":"多重冲压机"
+"name":"次代煤炭离心机"
 //此工厂在游戏中的名字
 	"type": "GenericCrafter",
 	//类别普通工厂GenericCrafter
 	//地形工厂AttributeCrafter
-	"health": 640,
+	"health": 360,
 	//生命值
-	"outputItem": {"item": "graphite", "amount": 6	},
+	"outputItem": {"item": "coal", "amount": 10	},
 	//输出物品为:石墨 3
-	"itemCapacity": 75,
+	"itemCapacity": 80,
 	//工厂物品的最大容量
-	"liquidCapacity":48
-	"size": 4,
+	"liquidsCapacity":48
+	"size": 3,
 	//建筑大小
 	"hasPower": true,
 	//工厂是否需要用到电力,是；false:否
@@ -19,7 +19,7 @@
 	//工厂是否需要用到液体,是；false:否
 	"hasItems": true,
 	//工厂是否需要用到物品,是；false:否
-	"craftTime": 15,
+	"craftTime": 60,
 	//工厂运行一次所用的时间,60:1秒
 	"updateEffect":"none",
 	//粒子特效,无
@@ -27,14 +27,9 @@
 	//运行特效,无
 	"consumes": {
 	//运行需求:
-		"power": 2.3,
+		"power": 4
 	//要电:2.5×60=150
-	"liquid":"oil/0.2498"
-	"items": [
-	//要物品:
-	"coal/4"
-	//煤炭2;
-	]
+	"liquid":"oil/0.4"
 		}
 	"requirements": [
 	//建造此建筑需要什么材料,各多少
@@ -48,16 +43,12 @@
 		//塑钢:65
 		{ "item": "silicon", "amount": 65 },
 		//硅:65
-		{ "item": "surge-alloy", "amount": 30 }
-		//合金
-		{ "item": "thorium", "amount": 40 }
-		//钍
 		],
 	"category": "crafting",
 	//游戏内分类:制作
 	"ambientSound":"smelter",
 	//音效:冶炼厂
-	"research": "multi-press"
+	"research": "coal-centrifuge"
 //科技:大石墨
 }
 /*物品:
@@ -77,10 +68,6 @@ surge-alloy浪涌合金
 spore-pod孢子
 blast-compound爆炸物
 pyratite硫化物
-
-
-
-
 
 液体:
 水:water

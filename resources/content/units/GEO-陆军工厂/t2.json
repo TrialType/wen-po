@@ -2,6 +2,7 @@
  "type": "tank",//类别: 坦克
  "name": "连射",//名字
  "description": "远程火炮组 A-2",//介绍
+ "research": "t2",//研究
  "hitSize": 14,//碰撞箱=根号下长×宽 ÷4
  "health": 320,//生命值
  "armor": 2,//护甲值 1: 1抵消伤害

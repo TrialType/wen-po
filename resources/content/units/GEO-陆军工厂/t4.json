@@ -1,0 +1,121 @@
+{
+ "type": "tank",//类别: 坦克
+ "name": "齐射",//名字
+ "description": "远程火炮组 A-3",//介绍
+ "hitSize": 24,//碰撞箱=根号下长×宽 ÷4
+ "health": 640,//生命值
+ "armor": 4,//护甲值 1: 1抵消伤害
+ "speed": 1,//移动速度
+ "omniMovement": false,//是否万向移动
+ "rotateMoveFirst": false,//是否先掉头到前进方向后在移动
+ "rotateSpeed": 1,//旋转速度
+ "treadRects": [//履带设置
+ {
+ "x": 12,//履带横轴
+ "y": -56,//履带纵轴
+ "width": 31,//履带宽
+ "height": 112,//履带高
+ },
+ ],
+ "treadPullOffset": 0,//履带偏移
+ "healColor": "FF5B5B",//被治愈颜色
+ "outlineColor": "383848",//描边颜色
+ "hovering": false,//悬浮
+ "canDrown": true,//溺水
+ "drownTimeMultiplier": 4,//溺水倍率 越大越慢
+ "faceTarget": true,//转向锁定
+ "range": 640,//索敌范围
+ "maxRange": 640,//武器最大射程
+ "targetAir": true,//对空
+ "targetGround": true,//对地
+ "faceTarget": false,//攻击时面向敌人
+ "weapons": [//武器
+ {//主武器
+ "name": "连射",//读取武器贴图
+ "range": 640,//攻击范围
+ "reload": 240,//攻速
+ "x": 0,//定位
+ "y": 0,//定位
+ "shootY": -0.5,//炮口定位
+ "cooldownTime": 90,//过热冷却
+ "inaccuracy": 4,//射击误差 度
+ "recoil": 2,//武器后摇
+ "recoilTime": 120,//武器后摇时间
+ "shake": 2,//抖动与抖动时长 (囧,谁的馊主意)
+ "rotate": true,//允许武器独自旋转
+ "rotateSpeed": 3,//武器旋转速度
+ "shootSound": "点射",//武器音效
+ "mirror": false,//镜像
+ "outlineColor": "383848",//描边颜色
+ "top": true,//
+ "shoot": {//射击模式设置
+ "shots": 4,//一次性发射子弹的数量
+ "shotDelay": 7,//子弹间隔
+ "type": "ShootAlternate",//类型: 交替射击
+ "barrels": 2,//炮口数量
+ "spread": 4//炮口间距
+ },
+   "bullet": {
+      "damage": 68,
+      "hittable": false,
+      "reflectable": false,
+      "absorbable": false,
+      "trailColor": "FF3D3DFF",
+      "trailLength": 9,
+      "trailWidth": 5,
+      "buildingDamageMultiplier": 0.25,
+      "sprite": "wen-po-环圆",
+      "pierce": true,
+      "pierceBuilding": true,
+      "despawnEffect": {
+                    "type": "WrapEffect",
+                    "effect": "massiveExplosion",
+                    "color": "FF0000FF",
+                    "rotation": 60,
+                  }
+      "hitEffect": {
+       "type": "WrapEffect",
+        "effect": "dynamicSpikes",
+         "color": "FF0000FF",
+           "rotation": 60,
+             }
+      "spin": 3,
+      "width": 24,
+      "height": 24,
+      "shrinkX": 0,
+      "shrinkY": 0,
+      "speed": 8,
+      "lifetime": 100,
+      "backColor": "FF0000FF",
+      "frontColor": "CE0000FF",
+      "splashDamage": 80,
+      "splashDamageRadius": 40,
+      "hitSound": "plasmaboom",
+      "hitShake": 0.1,
+      "intervalBullets": 4,
+      "intervalAngle": 0,
+      "intervalSpread": 1,
+   }
+ "parts": [
+ {
+ "type": "RegionPart",
+ "mirror": false,//镜像
+ "suffix": "-管",//贴图读取
+ "under": false,
+ "moveY": -1,
+ "heatProgress": "recoil",
+ "progress": "recoil"
+ }
+ {
+ "type": "RegionPart",
+ "mirror": false,//镜像
+ "suffix": "-管1",//贴图读取
+ "under": false,
+ "moveY": -1,
+ "heatProgress": "recoil",
+ "progress": "recoil"
+ }
+ ]
+ }
+ ]
+}

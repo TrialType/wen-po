@@ -1,0 +1,12 @@
+{
+"name":"赤铁矿",
+"type":"OreBlock",//类型矿地板
+"playerUnmineable":false,//玩家可以挖掘
+"itemDrop":"铁",//输出物品
+"variants":3,//这个地板有多少个贴图
+"mapColor":"#931D1DFF",//地图上的颜色
+"useColor":true,
+"oreDefault":true,
+"oreThreshold":0.9,
+"oreScale":35
+}

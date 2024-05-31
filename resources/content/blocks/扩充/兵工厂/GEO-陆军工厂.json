@@ -1,0 +1,33 @@
+{
+	"type": "UnitFactory",
+	"name": "GEO-陆军工厂",
+	"description": "是生产t1陆军的工厂",
+    "health":400,
+	"size":3,//边长
+	"plans":[//能生产的单位
+    {"unit": "t1"/*单位名字*/,
+    "time": 120,//时间（帧）
+	"requirements": [//制造单位所需物品
+	"铁/15",
+	"titanium/15"
+	"silicon/30",
+    ]
+    }
+    ]
+	"requirements":[
+		"copper/300",
+		"lead/250",
+		"titanium/220",
+		"silicon/350",
+		"铁/320"
+		]
+	"category":"units",
+	"buildVisibility":"shown",
+    "research": {//科技
+    "parent": "geo-default-core",//前置科技
+    "objectives": [{
+	"type": "SectorComplete",
+	"preset": "nuclearComplex"//地区
+	}]}
+	"alwaysUnlocked": false,//默认解锁
+}

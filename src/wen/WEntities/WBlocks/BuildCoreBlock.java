@@ -38,6 +38,5 @@ public class BuildCoreBlock extends CoreBlock {
     }
 
     public class BuildCoreBuild extends CoreBuild {
-
     }
 }

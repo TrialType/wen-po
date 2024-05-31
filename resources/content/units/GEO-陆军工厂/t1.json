@@ -3,6 +3,7 @@
  "name": "点射",
  "description": "远程火炮组 A-1", //名字
  //介绍
+ "research": "GEO-陆军工厂",//研究
  "hitSize": 8,
  //碰撞箱=根号下长×宽 ÷4
  "health": 160,
