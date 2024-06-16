@@ -24,7 +24,7 @@
 	"category":"units",
 	"buildVisibility":"shown",
     "research": {//科技
-    "parent": "geo-default-core",//前置科技
+    "parent": "GEO-初代核心",//前置科技
     "objectives": [{
 	"type": "SectorComplete",
 	"preset": "nuclearComplex"//地区
