@@ -54,7 +54,7 @@ public class ExpendBlock extends Block {
         Seq<Bullet> bullets = new Seq<>();
         float centerReload;
         float centerTimer = 0;
-        float lightReload;
+        float lightReload = 1;
         float lightTimer = 0;
 
         @Override
