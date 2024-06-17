@@ -7,6 +7,7 @@ import arc.util.Time;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
 import mindustry.content.Fx;
+import mindustry.entities.Effect;
 import mindustry.entities.bullet.BulletType;
 import mindustry.entities.bullet.ContinuousBulletType;
 import mindustry.gen.Building;
@@ -25,6 +26,8 @@ public class ExpendBlock extends Block {
         speed = 16;
         despawnEffect = shootEffect = Fx.none;
     }};
+    public Effect lightEffect;
+    public Effect centerEffect;
     public int max = 4;
     public float damageBoost = 0.3f;
     public float boost = 0.3f;
@@ -49,14 +52,34 @@ public class ExpendBlock extends Block {
     public class ExpendBuild extends Building {
         Seq<Integer> turrets = new Seq<>(max);
         Seq<Bullet> bullets = new Seq<>();
+        float centerReload;
+        float centerTimer = 0;
+        float lightReload;
+        float lightTimer = 0;
 
         @Override
         public void updateTile() {
+            if (centerEffect != null) {
+                centerReload = centerEffect.lifetime;
+                centerTimer += Time.delta;
+                if (centerTimer >= centerReload) {
+                    centerEffect.at(this);
+                    centerTimer = 0;
+                }
+            }
+            if (lightEffect != null) {
+                lightReload = lightEffect.lifetime;
+                lightTimer += Time.delta;
+            }
+
             turrets.removeAll(i -> world.build(i) == null || !world.build(i).isAdded() ||
                     !(world.build(i) instanceof Turret.TurretBuild));
             bullets.removeAll(b -> b == null || !b.isAdded());
             turrets.each(t -> {
                 Building b = world.build(t);
+                if (lightTimer >= lightReload) {
+                    lightEffect.at(b);
+                }
                 b.health -= b.maxHealth * 0.005f * Time.delta;
                 if (b.health < 0) {
                     b.dead = true;
@@ -93,6 +116,9 @@ public class ExpendBlock extends Block {
                 }
             });
             turrets.removeAll(t -> world.build(t) == null || world.build(t).dead);
+            if (lightTimer >= lightReload) {
+                lightTimer = 0;
+            }
         }
 
         @Override
