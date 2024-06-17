@@ -6,18 +6,25 @@ import arc.struct.Seq;
 import arc.util.Time;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
+import mindustry.content.Fx;
+import mindustry.entities.bullet.BulletType;
+import mindustry.entities.bullet.ContinuousBulletType;
 import mindustry.gen.Building;
 import mindustry.gen.Bullet;
-import mindustry.gen.Groups;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Pal;
 import mindustry.world.Block;
+import mindustry.world.blocks.defense.turrets.ContinuousTurret;
 import mindustry.world.blocks.defense.turrets.Turret;
 
 import static mindustry.Vars.tilesize;
 import static mindustry.Vars.world;
 
 public class ExpendBlock extends Block {
+    private final BulletType bullet = new BulletType() {{
+        speed = 16;
+        despawnEffect = shootEffect = Fx.none;
+    }};
     public int max = 4;
     public float damageBoost = 0.3f;
     public float boost = 0.3f;
@@ -48,21 +55,41 @@ public class ExpendBlock extends Block {
             turrets.removeAll(i -> world.build(i) == null || !world.build(i).isAdded() ||
                     !(world.build(i) instanceof Turret.TurretBuild));
             bullets.removeAll(b -> b == null || !b.isAdded());
-            Groups.bullet.each(b -> {
-                if (b.owner instanceof Turret.TurretBuild t && turrets.indexOf(t.pos()) >= 0 && bullets.indexOf(b) < 0) {
-                    b.damage *= (damageBoost + 1);
-                    bullets.add(b);
-                }
-            });
             turrets.each(t -> {
                 Building b = world.build(t);
-                b.health -= b.maxHealth * 0.02f * Time.delta;
+                b.health -= b.maxHealth * 0.005f * Time.delta;
                 if (b.health < 0) {
                     b.dead = true;
                     b.kill();
                 }
                 if (!b.dead && b.block.canOverdrive) {
                     b.applyBoost((1 + boost), 2 * Time.delta);
+                }
+                Turret.TurretBuild tb = (Turret.TurretBuild) b;
+                if (tb.wasShooting) {
+                    BulletType bu = tb.peekAmmo();
+                    bullet.pierce = bu.pierce;
+                    bullet.pierceCap = bu.pierceCap;
+                    bullet.pierceBuilding = bu.pierceBuilding;
+                    bullet.pierceArmor = bu.pierceArmor;
+                    bullet.reflectable = bu.reflectable;
+                    bullet.hittable = bu.hittable;
+                    bullet.absorbable = bu.absorbable;
+                    if (b instanceof ContinuousTurret.ContinuousTurretBuild ct) {
+                        bullet.lifetime = ct.lastLength / 16;
+                        for (Turret.BulletEntry e : ct.bullets) {
+                            if (e.bullet.type instanceof ContinuousBulletType c) {
+                                bullet.damage /= c.damageInterval;
+                            } else {
+                                bullet.damage = e.bullet.damage;
+                            }
+                            bullet.create(tb, tb.x, tb.y, tb.rotation);
+                        }
+                    } else {
+                        bullet.damage = damageBoost * bu.damage;
+                        bullet.lifetime = bu.range / 16;
+                        bullet.create(tb, tb.x, tb.y, tb.rotation);
+                    }
                 }
             });
             turrets.removeAll(t -> world.build(t) == null || world.build(t).dead);
