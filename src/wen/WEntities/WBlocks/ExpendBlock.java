@@ -10,7 +10,6 @@ import arc.util.Tmp;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
 import mindustry.Vars;
-import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.entities.Effect;
 import mindustry.entities.bullet.*;
@@ -24,7 +23,6 @@ import mindustry.type.Weapon;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.ContinuousTurret;
 import mindustry.world.blocks.defense.turrets.LaserTurret;
-import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.defense.turrets.Turret;
 import mindustry.world.consumers.ConsumeLiquidFilter;
 
@@ -111,7 +109,7 @@ public class ExpendBlock extends Block {
                     if (bu != null) {
                         if (bu instanceof ContinuousBulletType c) {
                             bu.damage /= c.damageInterval;
-                            bu.lifetime = 6;
+                            bu.lifetime = 1;
                             if (c instanceof ContinuousFlameBulletType f) {
                                 f.lengthInterp = Interp.one;
                             } else if (c instanceof ContinuousLaserBulletType l) {
@@ -236,12 +234,12 @@ public class ExpendBlock extends Block {
             if (build instanceof ContinuousTurret.ContinuousTurretBuild) {
                 ct = (ContinuousTurret.ContinuousTurretBuild) build;
             }
-            return (!build.charging() && build.hasAmmo() && build.efficiency > 0 && (t.alwaysShooting ||
+            return (build.hasAmmo() && build.efficiency > 0 && (t.alwaysShooting ||
 
                     (((ct == null && ((t.coolant != null && t.coolant.efficiency(build) > 0 &&
                             build.reloadCounter <= t.coolant.amount * t.coolant.efficiency(build) * edelta() *
                                     (t.coolant instanceof ConsumeLiquidFilter filter ?
-                                            filter.getConsumed(build).heatCapacity : 1f) * t.coolantMultiplier * 1.11) ||
+                                            filter.getConsumed(build).heatCapacity : 1f) * t.coolantMultiplier) ||
                             (!(t.coolant != null && t.coolant.efficiency(build) > 0) && build.reloadCounter <= 0))) ||
                             (ct != null && ct.canConsume())) &&
 
