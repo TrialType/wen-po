@@ -1,31 +1,37 @@
 package wen.WEntities.WBlocks;
 
 import arc.graphics.g2d.Draw;
+import arc.math.Angles;
+import arc.math.Interp;
 import arc.math.Mathf;
 import arc.struct.Seq;
 import arc.util.Time;
+import arc.util.Tmp;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
+import mindustry.Vars;
+import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.entities.Effect;
-import mindustry.entities.bullet.BulletType;
-import mindustry.entities.bullet.ContinuousBulletType;
+import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.ShootPattern;
 import mindustry.gen.Building;
 import mindustry.gen.Bullet;
+import mindustry.gen.TimedKillUnit;
 import mindustry.graphics.Drawf;
 import mindustry.graphics.Pal;
+import mindustry.type.Weapon;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.ContinuousTurret;
+import mindustry.world.blocks.defense.turrets.LaserTurret;
+import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.defense.turrets.Turret;
+import mindustry.world.consumers.ConsumeLiquidFilter;
 
 import static mindustry.Vars.tilesize;
 import static mindustry.Vars.world;
 
 public class ExpendBlock extends Block {
-    private final BulletType bullet = new BulletType() {{
-        speed = 16;
-        despawnEffect = shootEffect = Fx.none;
-    }};
     public Effect lightEffect;
     public Effect centerEffect;
     public int max = 4;
@@ -51,7 +57,6 @@ public class ExpendBlock extends Block {
 
     public class ExpendBuild extends Building {
         Seq<Integer> turrets = new Seq<>(max);
-        Seq<Bullet> bullets = new Seq<>();
         float centerReload;
         float centerTimer = 0;
         float lightReload = 1;
@@ -74,7 +79,6 @@ public class ExpendBlock extends Block {
 
             turrets.removeAll(i -> world.build(i) == null || !world.build(i).isAdded() ||
                     !(world.build(i) instanceof Turret.TurretBuild));
-            bullets.removeAll(b -> b == null || !b.isAdded());
             turrets.each(t -> {
                 Building b = world.build(t);
                 if (lightTimer >= lightReload) {
@@ -84,34 +88,140 @@ public class ExpendBlock extends Block {
                 if (b.health < 0) {
                     b.dead = true;
                     b.kill();
+                    return;
                 }
                 if (!b.dead && b.block.canOverdrive) {
                     b.applyBoost((1 + boost), 2 * Time.delta);
                 }
                 Turret.TurretBuild tb = (Turret.TurretBuild) b;
-                if (tb.wasShooting) {
-                    BulletType bu = tb.peekAmmo();
-                    bullet.pierce = bu.pierce;
-                    bullet.pierceCap = bu.pierceCap;
-                    bullet.pierceBuilding = bu.pierceBuilding;
-                    bullet.pierceArmor = bu.pierceArmor;
-                    bullet.reflectable = bu.reflectable;
-                    bullet.hittable = bu.hittable;
-                    bullet.absorbable = bu.absorbable;
-                    if (b instanceof ContinuousTurret.ContinuousTurretBuild ct) {
-                        bullet.lifetime = ct.lastLength / 16;
-                        for (Turret.BulletEntry e : ct.bullets) {
-                            if (e.bullet.type instanceof ContinuousBulletType c) {
-                                bullet.damage /= c.damageInterval;
-                            } else {
-                                bullet.damage = e.bullet.damage;
+                ContinuousTurret.ContinuousTurretBuild ct;
+                if (tb instanceof ContinuousTurret.ContinuousTurretBuild) {
+                    ct = (ContinuousTurret.ContinuousTurretBuild) tb;
+                } else {
+                    ct = null;
+                }
+                Turret tu = (Turret) tb.block;
+                if (isShooting(tu, tb)) {
+                    Fx.healWave.at(Vars.player.unit());
+                    int counter = tb.barrelCounter;
+                    float X = tu.shootX;
+                    float Y = tu.shootY;
+                    ShootPattern s = tu.shoot;
+                    BulletType bu = tb.peekAmmo().copy();
+                    if (bu != null) {
+                        if (bu instanceof ContinuousBulletType c) {
+                            bu.damage /= c.damageInterval;
+                            bu.lifetime = 6;
+                            if (c instanceof ContinuousFlameBulletType f) {
+                                f.lengthInterp = Interp.one;
+                            } else if (c instanceof ContinuousLaserBulletType l) {
+                                l.fadeTime = 0;
                             }
-                            bullet.create(tb, tb.x, tb.y, tb.rotation);
+                        } else if (bu instanceof PointLaserBulletType) {
+                            bu.lifetime = 1;
                         }
-                    } else {
-                        bullet.damage = damageBoost * bu.damage;
-                        bullet.lifetime = bu.range / 16;
-                        bullet.create(tb, tb.x, tb.y, tb.rotation);
+                        if (ct != null) {
+                            if (bu instanceof ContinuousBulletType c) {
+                                s.shoot(counter, (x, y, ro, delay, move) -> {
+                                    Time.run(delay, () -> {
+                                        Tmp.v1.trns(tb.rotation, Y + y);
+                                        Tmp.v2.trns(tb.rotation - 90, X + x);
+                                        Bullet blu = bu.create(tb, team, b.x + Tmp.v1.x + Tmp.v2.x,
+                                                b.y + Tmp.v1.y + Tmp.v2.y, tb.rotation + ro +
+                                                        Mathf.range(tu.inaccuracy + bu.inaccuracy),
+                                                bu.damage * damageBoost / c.damageInterval,
+                                                1, Mathf.clamp(Mathf.dst(b.x + Tmp.v1.x, b.y +
+                                                                Tmp.v1.y, tb.targetPos.x, tb.targetPos.y) / bu.range,
+                                                        tu.minRange / bu.range, tb.range() / bu.range), null);
+                                        Tmp.v1.trns(tb.rotation + 90, ct.lastLength + b.y);
+                                        blu.aimX = Tmp.v1.x;
+                                        blu.aimY = Tmp.v1.y;
+                                    });
+                                }, () -> {
+                                });
+                            } else if (bu instanceof PointLaserBulletType) {
+                                s.shoot(counter, (x, y, ro, delay, move) -> {
+                                    Time.run(delay, () -> {
+                                        Tmp.v1.trns(tb.rotation, Y + y);
+                                        Tmp.v2.trns(tb.rotation - 90, X + x);
+                                        Bullet blu = bu.create(tb, team,
+                                                b.x + Tmp.v1.x + Tmp.v2.x, b.y + Tmp.v1.y + Tmp.v2.y,
+                                                tb.rotation + ro + Mathf.range(tu.inaccuracy + bu.inaccuracy),
+                                                bu.damage * damageBoost, 1, 1, null
+                                        );
+                                        blu.aimX = blu.x + Angles.trnsx(tb.rotation, ct.lastLength);
+                                        blu.aimY = blu.y + Angles.trnsy(tb.rotation, ct.lastLength);
+                                    });
+                                }, () -> {
+                                });
+                            } else {
+                                s.shoot(counter, (x, y, ro, delay, move) -> {
+                                    Time.run(delay, () -> {
+                                        Tmp.v1.trns(tb.rotation, Y + y);
+                                        Tmp.v2.trns(tb.rotation - 90, X + x);
+                                        bu.create(tb, team, b.x + Tmp.v1.x + Tmp.v2.x,
+                                                b.y + Tmp.v1.y + Tmp.v2.y, tb.rotation +
+                                                        ro + Mathf.range(tu.inaccuracy + bu.inaccuracy),
+                                                bu.damage * damageBoost,
+                                                1, 1, null
+                                        );
+                                    });
+                                }, () -> {
+                                });
+                            }
+                        } else if (bu instanceof PointBulletType || bu instanceof ArtilleryBulletType) {
+                            s.shoot(counter, (x, y, ro, delay, move) -> {
+                                Time.run(delay, () -> {
+                                    Tmp.v1.trns(tb.rotation, Y + y);
+                                    Tmp.v2.trns(tb.rotation - 90, X + x);
+                                    bu.create(tb, team, b.x + Tmp.v1.x + Tmp.v2.x,
+                                            b.y + Tmp.v1.y + Tmp.v2.y, tb.rotation + ro +
+                                                    Mathf.range(tu.inaccuracy + bu.inaccuracy),
+                                            bu.damage * damageBoost, 1,
+                                            Mathf.clamp(Mathf.dst(b.x + Tmp.v1.x, b.y +
+                                                            Tmp.v1.y, tb.targetPos.x, tb.targetPos.y) / bu.range,
+                                                    tu.minRange / bu.range, tb.range() / bu.range),
+                                            null
+                                    );
+                                });
+                            }, () -> {
+                            });
+                        } else if (bu.spawnUnit != null && bu.spawnUnit.constructor.get() instanceof TimedKillUnit) {
+                            s.shoot(counter, (x, y, ro, delay, move) -> {
+                                Time.run(delay, () -> {
+                                    Tmp.v1.trns(tb.rotation, Y + y);
+                                    Tmp.v2.trns(tb.rotation - 90, X + x);
+                                    if (bu.spawnUnit.weapons.any()) {
+                                        for (Weapon w : bu.spawnUnit.weapons) {
+                                            w.bullet.damage = w.bullet.damage * damageBoost;
+                                        }
+                                    }
+                                    bu.init();
+                                    bu.load();
+                                    bu.create(tb, team, b.x + Tmp.v1.x + Tmp.v2.x,
+                                            b.y + Tmp.v1.y + Tmp.v2.y, tb.rotation + ro +
+                                                    Mathf.range(tu.inaccuracy + bu.inaccuracy),
+                                            bu.damage * damageBoost,
+                                            1, 1, null
+                                    );
+                                });
+                            }, () -> {
+                            });
+                        } else {
+                            s.shoot(counter, (x, y, ro, delay, move) -> {
+                                Time.run(delay, () -> {
+                                    Tmp.v1.trns(tb.rotation, Y + y);
+                                    Tmp.v2.trns(tb.rotation - 90, X + x);
+                                    bu.create(tb, team, b.x + Tmp.v1.x + Tmp.v2.x,
+                                            b.y + Tmp.v1.y + Tmp.v2.y, tb.rotation + ro +
+                                                    Mathf.range(tu.inaccuracy + bu.inaccuracy),
+                                            bu.damage * damageBoost,
+                                            1, 1, null
+                                    );
+                                });
+                            }, () -> {
+                            });
+                        }
                     }
                 }
             });
@@ -119,6 +229,25 @@ public class ExpendBlock extends Block {
             if (lightTimer >= lightReload) {
                 lightTimer = 0;
             }
+        }
+
+        public boolean isShooting(Turret t, Turret.TurretBuild build) {
+            ContinuousTurret.ContinuousTurretBuild ct = null;
+            if (build instanceof ContinuousTurret.ContinuousTurretBuild) {
+                ct = (ContinuousTurret.ContinuousTurretBuild) build;
+            }
+            return (!build.charging() && build.hasAmmo() && build.efficiency > 0 && (t.alwaysShooting ||
+
+                    (((ct == null && ((t.coolant != null && t.coolant.efficiency(build) > 0 &&
+                            build.reloadCounter <= t.coolant.amount * t.coolant.efficiency(build) * edelta() *
+                                    (t.coolant instanceof ConsumeLiquidFilter filter ?
+                                            filter.getConsumed(build).heatCapacity : 1f) * t.coolantMultiplier * 1.11) ||
+                            (!(t.coolant != null && t.coolant.efficiency(build) > 0) && build.reloadCounter <= 0))) ||
+                            (ct != null && ct.canConsume())) &&
+
+                            build.shootWarmup >= t.minWarmup && build.wasShooting))) ||
+
+                    (build instanceof LaserTurret.LaserTurretBuild l && l.bullets.any());
         }
 
         @Override
@@ -138,7 +267,9 @@ public class ExpendBlock extends Block {
             Draw.reset();
             turrets.each(i -> {
                 var link = world.build(i);
-                Drawf.square(link.x, link.y, link.block.size * tilesize / 2f + 1f, Pal.place);
+                if (link != null) {
+                    Drawf.square(link.x, link.y, link.block.size * tilesize / 2f + 1f, Pal.place);
+                }
             });
         }
 
