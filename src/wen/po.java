@@ -7,7 +7,7 @@ import mindustry.mod.*;
 import wen.WContents.WBlocks;
 import wen.WContents.WPlanets;
 import wen.WEntities.WBlocks.BuildCoreBlock;
-import wen.WEntities.WBlocks.ExpendBlock;
+import wen.WEntities.WBullet.Type.*;
 import wen.WType.MoreTechResearchDialog;
 
 import static mindustry.Vars.ui;
@@ -16,7 +16,27 @@ public class po extends Mod {
     @Override
     public void loadContent() {
         ClassMap.classes.put("BuildCoreBlock", BuildCoreBlock.class);
-        ClassMap.classes.put("ExpendBlock", ExpendBlock.class);
+        ClassMap.classes.put("CriticalArtilleryBulletType", CriticalArtilleryBulletType.class);
+        ClassMap.classes.put("CriticalBasicBulletType", CriticalBasicBulletType.class);
+        ClassMap.classes.put("CriticalBombBulletType", CriticalBombBulletType.class);
+        ClassMap.classes.put("CriticalContinuousBulletType", CriticalContinuousBulletType.class);
+        ClassMap.classes.put("CriticalContinuousFlameBulletType", CriticalContinuousFlameBulletType.class);
+        ClassMap.classes.put("CriticalContinuousLaserBulletType", CriticalContinuousLaserBulletType.class);
+        ClassMap.classes.put("CriticalEmpBulletType", CriticalEmpBulletType.class);
+        ClassMap.classes.put("CriticalExplosionBulletType", CriticalExplosionBulletType.class);
+        ClassMap.classes.put("CriticalFireBulletType", CriticalFireBulletType.class);
+        ClassMap.classes.put("CriticalLaserBoltBulletType", CriticalLaserBoltBulletType.class);
+        ClassMap.classes.put("CriticalLaserBulletType", CriticalLaserBulletType.class);
+        ClassMap.classes.put("CriticalLightningBulletType", CriticalLightningBulletType.class);
+        ClassMap.classes.put("CriticalLiquidBulletType", CriticalLiquidBulletType.class);
+        ClassMap.classes.put("CriticalMassDriverBolt", CriticalMassDriverBolt.class);
+        ClassMap.classes.put("CriticalMissileBulletType", CriticalMissileBulletType.class);
+        ClassMap.classes.put("CriticalPointBulletType", CriticalPointBulletType.class);
+        ClassMap.classes.put("CriticalPointLaserBulletType", CriticalPointLaserBulletType.class);
+        ClassMap.classes.put("CriticalRailBulletType", CriticalRailBulletType.class);
+        ClassMap.classes.put("CriticalSapBulletType", CriticalSapBulletType.class);
+        ClassMap.classes.put("CriticalShrapnelBulletType", CriticalShrapnelBulletType.class);
+        ClassMap.classes.put("CriticalSpaceLiquidBulletType", CriticalSpaceLiquidBulletType.class);
         WPlanets.load();
         WBlocks.load();
         Events.on(EventType.ClientLoadEvent.class, e -> Time.runTask(10f, () -> ui.research = new MoreTechResearchDialog()));
