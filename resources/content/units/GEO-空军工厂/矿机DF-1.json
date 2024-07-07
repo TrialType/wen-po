@@ -10,11 +10,11 @@
       ],
   "playerControllable": false,//玩家附身
   "speed": 2.5,//速度
-  "mineSpeed": 5,//采矿速度
+  "mineSpeed": 6,//采矿速度
   "rotateSpeed": 10.5,//转弯速度
   "mineTier": 3,//矿机等级
   "accel": 0.3,//加速速度
-  "drag": 0.5,//惯性
+  "drag": 0.2,//惯性
   "trailLength": 10,//拖尾长度
   "mineHardnessScaling": true,//
   "mineWalls": true,//开采墙壁矿

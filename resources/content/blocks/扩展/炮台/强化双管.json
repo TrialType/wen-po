@@ -30,7 +30,7 @@
 	"rotateSpeed": 12,//旋转速度
 	"shake": 1,//后摇程度
 	"recoil":2,//后坐力
-	"maxAmmo":20,//弹夹容量
+	"maxAmmo":40,//弹夹容量
 	"ammoTypes": {//可用弹药
 	"copper": {//铜
 	"speed": 5,//速度

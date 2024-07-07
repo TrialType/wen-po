@@ -6,7 +6,7 @@
 	//地形工厂AttributeCrafter
 	"health": 740,
 	//生命值
-	"outputLiquid": {"liquid": "oil", "amount": 1 },
+	"outputLiquid": {"liquid": "oil", "amount": 2 },
 	//输出液体量为:9.321×60
 	"itemCapacity": 60,
 	//工厂物品的最大容量

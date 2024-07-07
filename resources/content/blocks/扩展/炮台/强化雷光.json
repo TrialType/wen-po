@@ -5,7 +5,7 @@
 	"size": 4,//大小
 	"reload": 35,//射弹数/s=raloed÷60×子弹的装填时间倍率
 	"range": 128,//自动攻击范围=range值÷8
-	"ammoPerShot": 4//发射一次需要多少弹药
+	"ammoPerShot": 1//发射一次需要多少弹药
  "targetAir":true,//瞄准空军
  "targetGround":true,//瞄准陆军
 	"consumes": {//消耗
@@ -30,7 +30,7 @@
 	"rotateSpeed": 16,//旋转速度
 	"shake": 2,//后摇程度
 	"recoil":4,//后坐力
-	"maxAmmo": 60,//弹夹容量
+	"maxAmmo": 40,//弹夹容量
 	"ammoTypes": {//可用弹药
 	"titanium": {//钛
 	"type": "ShrapnelBulletType",//子弹类型:雷光子弹

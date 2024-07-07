@@ -1,0 +1,29 @@
+{
+	"name": "次代卸货器",
+	"description": "从周围方块卸载指定物品。",
+	"size": 1,
+    "health": 140,
+	"speed": 1,
+	"type": "Unloader",
+	"itemCapacity":0,
+	"requirements": [
+		{"item": "titanium", "amount":25 }
+		{"item": "silicon", "amount":30 }
+		{"item": "plastanium", "amount":35 }
+	]
+	"group":"transportation",
+	"category": "effect",
+	"research": "unloader"
+}
+/*speed值与speed在游戏里的值:
+-1=-60
+0=21474836.47
+0.5=120
+0.8=75
+0.9=66.66
+1=60
+2=30
+3=20
+4=15
+6=12
+7=11

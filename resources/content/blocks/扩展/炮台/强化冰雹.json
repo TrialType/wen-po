@@ -5,7 +5,7 @@
 	"size": 2,//大小
 	"reload": 30,//射弹数/s=raloed÷60×子弹的装填时间倍率
 	"range": 360,//自动攻击范围=range值÷8
-	"ammoPerShot": 2//发射一次需要多少弹药
+	"ammoPerShot": 1//发射一次需要多少弹药
  "targetAir":false,//瞄准空军
  "targetGround":true,//瞄准陆军
 	"consumes": {//消耗
@@ -30,7 +30,7 @@
 	"rotateSpeed": 16,//旋转速度
 	"shake": 1,//后摇程度
 	"recoil":2,//后坐力
-	"maxAmmo":24,//弹夹容量
+	"maxAmmo":40,//弹夹容量
 	"ammoTypes": {//可用弹药
 	"graphite": {//石墨
 	"type":"ArtilleryBulletType",//种类:火炮子弹

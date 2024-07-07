@@ -18,7 +18,7 @@
 	//工厂是否需要用到液体,是；false:否
 	"hasItems": true,
 	//工厂是否需要用到物品,是；false:否
-	"craftTime": 30,
+	"craftTime": 60,
 	//工厂运行一次所用的时间,60:1秒
 	"updateEffect":"none",
 	//常驻粒子特效,无none,有smeltsmoke

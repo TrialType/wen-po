@@ -1,5 +1,5 @@
 {
-"name":"引力离心机"
+"name":"超代煤炭离心机"
 //此工厂在游戏中的名字
 	"type": "GenericCrafter",
 	//类别普通工厂GenericCrafter
@@ -48,10 +48,22 @@
 		{ "item": "thorium", "amount": 40 }
 		//钍
 		],
+	"drawer":{"type":"DrawMulti",
+	"drawers":[
+	{"type": "DrawRegion",
+	"suffix": "-bottom"
+	},
+	{"type": "DrawLiquidTile",
+	"drawLiquid": "oil",
+	},
+	{"type": "DrawDefault",
+    "suffix": "超代煤炭离心机",
+    },
+		]	}	
 	"category": "crafting",
 	//游戏内分类:制作
 	"ambientSound":"smelter",
 	//音效:冶炼厂
-	"research": "涡轮离心机"
+	"research": "次代煤炭离心机"
 //科技:大石墨
 }

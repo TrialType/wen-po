@@ -1,21 +1,19 @@
 {
     "type": "ItemBridge",
     //类别:带桥
-    "name":"硅传送带桥",
+    "name":"石墨传送带桥",
     //名字
     "ItemCapacity":10
 	   //物容
 	   "health": 55,
 	   //生命值
-	   "consumes": {"power": 0.15},
-    //耗电
     "requirements": [
     //建材
-    { "amount": 5, "item": "lead" },
+    { "amount": 6, "item": "lead" },
     //铅
-    { "amount": 5, "item": "copper" },
+    { "amount": 6, "item": "copper" },
     //铜
-    { "amount": 10, "item": "silicon" }
+    { "amount": 6, "item": "graphite" }
     //硅
     ],
     "range": 8,

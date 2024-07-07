@@ -6,7 +6,7 @@
 	//地形工厂AttributeCrafter
 	"health": 360,
 	//生命值
-	"outputItem": {"item": "coal", "amount": 10	},
+	"outputItem": {"item": "coal", "amount": 2	},
 	//输出物品为:石墨 3
 	"itemCapacity": 80,
 	//工厂物品的最大容量
@@ -19,7 +19,7 @@
 	//工厂是否需要用到液体,是；false:否
 	"hasItems": true,
 	//工厂是否需要用到物品,是；false:否
-	"craftTime": 60,
+	"craftTime": 30,
 	//工厂运行一次所用的时间,60:1秒
 	"updateEffect":"none",
 	//粒子特效,无
@@ -29,7 +29,7 @@
 	//运行需求:
 		"power": 4
 	//要电:2.5×60=150
-	"liquid":"oil/0.4"
+	"liquid":"oil/0.1"
 		}
 	"requirements": [
 	//建造此建筑需要什么材料,各多少
@@ -44,6 +44,18 @@
 		{ "item": "silicon", "amount": 65 },
 		//硅:65
 		],
+	"drawer":{"type":"DrawMulti",
+	"drawers":[
+	{"type": "DrawRegion",
+	"suffix": "-bottom"
+	},
+	{"type": "DrawLiquidTile",
+	"drawLiquid": "oil",
+	},
+	{"type": "DrawDefault",
+    "suffix": "次代煤炭离心机",
+    },
+		]	}	
 	"category": "crafting",
 	//游戏内分类:制作
 	"ambientSound":"smelter",

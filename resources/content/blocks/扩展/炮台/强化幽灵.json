@@ -5,7 +5,7 @@
 	"size": 5,//大小
 	"reload": 6.25,//射速
 	"range": 390,//自动攻击范围=range值÷8
-	"ammoPerShot": 2//发射一次需要多少弹药
+	"ammoPerShot": 1//发射一次需要多少弹药
  "targetAir":true,//瞄准空军
  "targetGround":true,//瞄准陆军
 	"consumes": {//消耗
@@ -31,7 +31,7 @@
 	"shake": 1,//后摇程度
 	"recoil":5,//后坐力
 	"recoilTime": 15
-	"maxAmmo":30,//弹夹容量
+	"maxAmmo":40,//弹夹容量
 	"ammoTypes": {//可用弹药
 	"graphite": {//石墨
 	"speed": 6,//速度

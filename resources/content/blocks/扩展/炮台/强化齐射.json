@@ -5,7 +5,7 @@
 	"size": 3,//大小
 	"reload": 30,//射速
 	"range": 288,//自动攻击范围=range值÷8
-	"ammoPerShot": 5//发射一次需要多少弹药
+	"ammoPerShot": 1//发射一次需要多少弹药
  "targetAir":true,//瞄准空军
  "targetGround":true,//瞄准陆军
 	"consumes": {//消耗
@@ -30,7 +30,7 @@
 	"rotateSpeed": 12,//旋转速度
 	"shake": 1,//后摇程度
 	"recoil":4,//后坐力
-	"maxAmmo":50,//弹夹容量
+	"maxAmmo":40,//弹夹容量
 	"ammoTypes": {//可用弹药
 	"copper": {//铜
 	"speed": 5,//速度

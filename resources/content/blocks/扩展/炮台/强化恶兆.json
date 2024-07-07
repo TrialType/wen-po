@@ -5,7 +5,7 @@
 	"size": 5,//大小
 	"reload": 120,//射速=60÷真实射速
 	"range": 750,//自动攻击范围=range值÷8
-	"ammoPerShot": 1//发射一次需要多少弹药
+	"ammoPerShot": 6//发射一次需要多少弹药
  "targetAir":true,//瞄准空军
  "targetGround":true,//瞄准陆军
  "hasPower": true,//是否需要用到电力,是；false:否
@@ -33,7 +33,7 @@
 	"rotateSpeed": 4,//旋转速度
 	"shake": 1,//震动程度
 	"recoil":6,//后坐力
-	"maxAmmo":30,//弹夹容量
+	"maxAmmo":50,//弹夹容量
 	"ammoTypes": {//可用弹药
 	"surge-alloy": {//合金
 	"type" : "pointBulletType",//子弹类型:恶兆

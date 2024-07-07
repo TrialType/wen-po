@@ -28,7 +28,7 @@
 	"rotateSpeed": 12,//旋转速度
 	"shake": 0,//后摇程度
 	"recoil":2,//后坐力
-	"maxAmmo":30,//弹夹容量
+	"maxAmmo":40,//弹夹容量
 	"ammoTypes": {//可用弹药
 	"coal": {//煤
 	"type": "BulletType",

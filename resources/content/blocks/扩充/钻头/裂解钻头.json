@@ -1,0 +1,33 @@
+{
+	"name": "裂解钻头",
+	"type": "BurstDrill",
+	"health": 1530,//生命值
+	"size": 5,//大小
+	"tier": 6,//钻头等级
+	"warmupSpeed": 60,//预热速度
+	"itemCapacity": 50,//物容
+	"liquidCapacity": 20,//液容
+	"drawRim": true,//
+	"hasItems": true,//
+	"drillTime": 40,//工作一次多久
+	"consumes": {//消耗
+		"power": 2.66,//电力
+		"liquid": {//液体
+			"liquid": "water",//水
+			"amount": 0.2,//用量
+		}
+	},
+	"requirements": [//建材
+	    "copper/64"//铜
+	    "lead/64"//铅
+	    "metaglass/32"//玻璃
+	    "graphite/32"//石墨
+	    "titanium/160"//钛
+	    "thorium/160"//钍
+	    "silicon/320"//硅
+	    "plastanium/160"//塑钢
+	    "phase-fabric/30"//相织布
+	],
+	"category": "production",//建筑栏分类
+	"research": "blast-drill",//科技
+}

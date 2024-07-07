@@ -1,16 +1,16 @@
 {
-"name":"高能合金冶炼厂"
+"name":"热能合金炉"
 //此工厂在游戏中的名字
 	"type": "AttributeCrafter",
 	//类别普通工厂GenericCrafter
 	//地形工厂AttributeCrafter
-	"health": 1900,
+	"health": 860,
 	//生命值
-	"outputItem": {"item": "surge-alloy", "amount": 14	},
+	"outputItem": {"item": "surge-alloy", "amount": 1 	},
 	//输出物品为:物品 3
-	"itemCapacity": 60,
+	"itemCapacity": 20,
 	//工厂物品的最大容量
-	"size": 6,
+	"size": 4,
 	//建筑大小
 	"hasPower": true,
 	//工厂是否需要用到电力,是；false:否
@@ -18,7 +18,7 @@
 	//工厂是否需要用到液体,是；false:否
 	"hasItems": true,
 	//工厂是否需要用到物品,是；false:否
-	"craftTime": 30,
+	"craftTime": 40,
 	//工厂运行一次所用的时间,60:1秒
 	"updateEffect":"none",
 	//常驻粒子特效,无none,有smeltsmoke
@@ -51,51 +51,46 @@
 	//工作特效数量
 	"consumes": {
 	//运行需求:
-	"power": 18,
-	//要电:8×60=480
+	"power": 8
+	//要电:2.5×60=150
 	"items": {	
 	"items": [
 	//要物品:
-{ "item": "copper", "amount": 3 },
+	{ "item": "copper", "amount": 3 },
 	//铜
-	{ "item": "lead", "amount": 3 }	
+	{ "item": "lead", "amount": 4}	
 		//铅
-	{ "item": "titanium", "amount":  3 }	
+	{ "item": "titanium", "amount":  2}	
 		//钛
-	{ "item": "thorium", "amount": 4 },
-	//钍
-	{ "item": "silicon", "amount": 4 },
+	{ "item": "silicon", "amount": 3 },
 	//硅
 	]
 		}
 	},
 	"requirements": [
 	//建造此建筑需要什么材料,各多少
-	{ "item": "titanium", "amount":240 },
+		{ "item": "titanium", "amount":80 },
 		//钛:85
-		{ "item": "lead", "amount": 280 },
+		{ "item": "lead", "amount": 120 },
 		//铅:120
-		{ "item": "graphite", "amount": 200 },
+		{ "item": "graphite", "amount": 100 },
 		//石墨:65
-		{ "item": "plastanium", "amount": 240 },
+		{ "item": "plastanium", "amount": 120 },
 		//塑钢
-		{ "item": "thorium", "amount": 180 },
+		{ "item": "thorium", "amount": 100 },
 		//钍
-		{ "item": "silicon", "amount": 240 }
+		{ "item": "silicon", "amount": 120 }
 		//硅
-		{ "item": "surge-alloy", "amount": 90 }
+		{ "item": "surge-alloy", "amount": 30 }
 		//合金
-		{ "item": "phase-fabric", "amount": 100 },
-		//布
 		],
 		"attribute":"heat"
 		//读取地板,所有热源
 	"baseEfficiency":1
 	//工厂基本效率,游戏内里百分比
-	"boostScale":0.0373
-	//一格增加的效率,
-	//计算效率按照效率最低的地板计算
-	//1=50%  0.1=5%  0.01=0.5%
+	"boostScale":0.083345
+	//一格增加效率,游戏里是百分比
+	//该参数和地板有关系
 	"maxHeatBoost":2
 	//最大提升效率(倍数)
 	//1为100% 2为200% 以此类推
@@ -103,7 +98,7 @@
 	//游戏内分类:制作
 	"ambientSound":"smelter",
 	//音效:冶炼厂
-	"research": "热能合金冶炼厂"
+	"research": "surge-smelter"
 //科技:大硅
 }
 /*物品:
