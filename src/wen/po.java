@@ -16,6 +16,7 @@ public class po extends Mod {
     @Override
     public void loadContent() {
         ClassMap.classes.put("BuildCoreBlock", BuildCoreBlock.class);
+        ClassMap.classes.put("CriticalBulletType", CriticalBulletType.class);
         ClassMap.classes.put("CriticalArtilleryBulletType", CriticalArtilleryBulletType.class);
         ClassMap.classes.put("CriticalBasicBulletType", CriticalBasicBulletType.class);
         ClassMap.classes.put("CriticalBombBulletType", CriticalBombBulletType.class);
