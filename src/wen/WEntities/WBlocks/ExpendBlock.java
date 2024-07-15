@@ -56,8 +56,8 @@ public class ExpendBlock extends Block {
     public void setStats() {
         super.setStats();
 
-        stats.add(new Stat("maxLinks"), max);
-        stats.add(new Stat("damageBoost"), damageBoost);
+        stats.add(new Stat("max-links"), max);
+        stats.add(new Stat("damage-boost"), damageBoost);
         stats.add(new Stat("boost"), boost);
         stats.add(new Stat("range"), range);
     }

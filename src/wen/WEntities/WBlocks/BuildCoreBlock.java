@@ -42,7 +42,7 @@ public class BuildCoreBlock extends CoreBlock {
     public void setStats() {
         super.setStats();
 
-        stats.add(new Stat("maxCoreNum"), max);
+        stats.add(new Stat("max-core-num"), max);
     }
 
     public class BuildCoreBuild extends CoreBuild {
