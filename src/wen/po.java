@@ -43,6 +43,7 @@ public class po extends Mod {
         ClassMap.classes.put("CriticalSapBulletType", CriticalSapBulletType.class);
         ClassMap.classes.put("CriticalShrapnelBulletType", CriticalShrapnelBulletType.class);
         ClassMap.classes.put("CriticalSpaceLiquidBulletType", CriticalSpaceLiquidBulletType.class);
+        ClassMap.classes.put("MultistageBulletType", MultistageBulletType.class);
         WStatusEffects.load();
         WPlanets.load();
         WBlocks.load();
