@@ -3,6 +3,7 @@ package wen.WEntities.WBlocks;
 import mindustry.game.Team;
 import mindustry.world.Tile;
 import mindustry.world.blocks.storage.CoreBlock;
+import mindustry.world.meta.Stat;
 
 import static mindustry.Vars.state;
 
@@ -35,6 +36,13 @@ public class BuildCoreBlock extends CoreBlock {
             return false;
 
         return tile.block() instanceof CoreBlock && size > tile.block().size && (!requiresCoreZone || tempTiles.allMatch(o -> o.floor().allowCorePlacement));
+    }
+
+    @Override
+    public void setStats() {
+        super.setStats();
+
+        stats.add(new Stat("maxCoreNum"), max);
     }
 
     public class BuildCoreBuild extends CoreBuild {

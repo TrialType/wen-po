@@ -1,13 +1,15 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
 import arc.math.Mathf;
 import arc.math.geom.Vec2;
 import arc.util.Nullable;
 import arc.util.Time;
+import mindustry.Vars;
 import mindustry.ai.types.MissileAI;
+import mindustry.content.Fx;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
-import mindustry.entities.bullet.ContinuousBulletType;
+import mindustry.entities.bullet.EmpBulletType;
 import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.world.blocks.ControlBlock;
@@ -17,13 +19,9 @@ import wen.inter.Critical;
 
 import static mindustry.Vars.*;
 
-public class CriticalContinuousBulletType extends ContinuousBulletType implements Critical {
+public class CriticalEmpBulletType extends EmpBulletType implements Critical {
     public float criticalChance1 = 0.2f, criticalChance2 = 1, criticalChance3 = 1;
     public float critical1 = 1.2f, critical2 = 1, critical3 = 1;
-
-    public void applyDamage(Bullet b) {
-        Damage2.criticalCollideLine(b, b.team, hitEffect, b.x, b.y, b.rotation(), currentLength(b), largeHit, laserAbsorb, pierceCap);
-    }
 
     @Override
     public void hit(Bullet b, float x, float y) {
@@ -44,6 +42,51 @@ public class CriticalContinuousBulletType extends ContinuousBulletType implement
             Lightning.create(b, lightningColor, lightningDamage < 0 ? damage : lightningDamage * trueCritical(),
                     b.x, b.y, b.rotation() + Mathf.range(lightningCone / 2) + lightningAngle,
                     lightningLength + Mathf.random(lightningLengthRand));
+        }
+        if (!b.absorbed) {
+            Vars.indexer.allBuildings(x, y, radius, other -> {
+                if (other.team == b.team) {
+                    if (other.block.hasPower && other.block.canOverdrive && other.timeScale() < timeIncrease) {
+                        other.applyBoost(timeIncrease, timeDuration);
+                        chainEffect.at(x, y, 0, hitColor, other);
+                        applyEffect.at(other, other.block.size * 7f);
+                    }
+
+                    if (other.block.hasPower && other.damaged()) {
+                        other.heal((healPercent / 100f * other.maxHealth() + healAmount) * trueCritical());
+                        Fx.healBlockFull.at(other.x, other.y, other.block.size, hitColor, other.block);
+                        applyEffect.at(other, other.block.size * 7f);
+                    }
+                } else if (other.power != null) {
+                    var absorber = Damage.findAbsorber(b.team, x, y, other.x, other.y);
+                    if (absorber != null) {
+                        other = absorber;
+                    }
+
+                    if (other.power != null && other.power.graph.getLastPowerProduced() > 0f) {
+                        other.applySlowdown(powerSclDecrease, timeDuration);
+                        other.damage(damage * powerDamageScl * trueCritical());
+                        hitPowerEffect.at(other.x, other.y, b.angleTo(other), hitColor);
+                        chainEffect.at(x, y, 0, hitColor, other);
+                    }
+                }
+            });
+
+            if (hitUnits) {
+                Units.nearbyEnemies(b.team, x, y, radius, other -> {
+                    if (other.team != b.team && other.hittable()) {
+                        var absorber = Damage.findAbsorber(b.team, x, y, other.x, other.y);
+                        if (absorber != null) {
+                            return;
+                        }
+
+                        hitPowerEffect.at(other.x, other.y, b.angleTo(other), hitColor);
+                        chainEffect.at(x, y, 0, hitColor, other);
+                        other.damage(damage * unitDamageScl * trueCritical());
+                        other.apply(status, statusDuration);
+                    }
+                });
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
 import arc.math.Mathf;
 import arc.math.geom.Vec2;
@@ -7,7 +7,7 @@ import arc.util.Time;
 import mindustry.ai.types.MissileAI;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
-import mindustry.entities.bullet.FireBulletType;
+import mindustry.entities.bullet.ContinuousFlameBulletType;
 import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.world.blocks.ControlBlock;
@@ -17,9 +17,13 @@ import wen.inter.Critical;
 
 import static mindustry.Vars.*;
 
-public class CriticalFireBulletType extends FireBulletType implements Critical {
-    public float criticalChance1 = 0.2f, criticalChance2 = 0.2f, criticalChance3 = 0.2f;
-    public float critical1 = 1.2f, critical2 = 1.2f, critical3 = 1.2f;
+public class CriticalContinuousFlameBulletType extends ContinuousFlameBulletType implements Critical {
+    public float criticalChance1 = 0.2f, criticalChance2 = 1, criticalChance3 = 1;
+    public float critical1 = 1.2f, critical2 = 1, critical3 = 1;
+
+    public void applyDamage(Bullet b) {
+        Damage2.criticalCollideLine(b, b.team, hitEffect, b.x, b.y, b.rotation(), currentLength(b), largeHit, laserAbsorb, pierceCap);
+    }
 
     @Override
     public void hit(Bullet b, float x, float y) {

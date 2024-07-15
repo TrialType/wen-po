@@ -9,8 +9,6 @@ import arc.util.Time;
 import arc.util.Tmp;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
-import mindustry.Vars;
-import mindustry.content.Fx;
 import mindustry.entities.Effect;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.ShootPattern;
@@ -25,6 +23,7 @@ import mindustry.world.blocks.defense.turrets.ContinuousTurret;
 import mindustry.world.blocks.defense.turrets.LaserTurret;
 import mindustry.world.blocks.defense.turrets.Turret;
 import mindustry.world.consumers.ConsumeLiquidFilter;
+import mindustry.world.meta.Stat;
 
 import static mindustry.Vars.tilesize;
 import static mindustry.Vars.world;
@@ -51,6 +50,16 @@ public class ExpendBlock extends Block {
                 e.turrets.add(i);
             }
         });
+    }
+
+    @Override
+    public void setStats() {
+        super.setStats();
+
+        stats.add(new Stat("maxLinks"), max);
+        stats.add(new Stat("damageBoost"), damageBoost);
+        stats.add(new Stat("boost"), boost);
+        stats.add(new Stat("range"), range);
     }
 
     public class ExpendBuild extends Building {
@@ -100,7 +109,6 @@ public class ExpendBlock extends Block {
                 }
                 Turret tu = (Turret) tb.block;
                 if (isShooting(tu, tb)) {
-                    Fx.healWave.at(Vars.player.unit());
                     int counter = tb.barrelCounter;
                     float X = tu.shootX;
                     float Y = tu.shootY;

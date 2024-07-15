@@ -1,4 +1,4 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
 import arc.math.Mathf;
 import arc.math.geom.Vec2;
@@ -7,7 +7,7 @@ import arc.util.Time;
 import mindustry.ai.types.MissileAI;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
-import mindustry.entities.bullet.ContinuousFlameBulletType;
+import mindustry.entities.bullet.PointLaserBulletType;
 import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.world.blocks.ControlBlock;
@@ -17,13 +17,9 @@ import wen.inter.Critical;
 
 import static mindustry.Vars.*;
 
-public class CriticalContinuousFlameBulletType extends ContinuousFlameBulletType implements Critical {
-    public float criticalChance1 = 0.2f, criticalChance2 = 1, criticalChance3 = 1;
-    public float critical1 = 1.2f, critical2 = 1, critical3 = 1;
-
-    public void applyDamage(Bullet b) {
-        Damage2.criticalCollideLine(b, b.team, hitEffect, b.x, b.y, b.rotation(), currentLength(b), largeHit, laserAbsorb, pierceCap);
-    }
+public class CriticalPointLaserBulletType extends PointLaserBulletType implements Critical {
+    public float criticalChance1 = 0.2f, criticalChance2 = 0.2f, criticalChance3 = 0.2f;
+    public float critical1 = 1.2f, critical2 = 0.2f, critical3 = 0.2f;
 
     @Override
     public void hit(Bullet b, float x, float y) {
@@ -63,6 +59,26 @@ public class CriticalContinuousFlameBulletType extends ContinuousFlameBulletType
             if (makeFire) {
                 indexer.eachBlock(null, x, y, splashDamageRadius, other -> other.team != b.team, other -> Fires.create(other.tile));
             }
+        }
+    }
+
+    @Override
+    public void update(Bullet b) {
+        updateTrail(b);
+        updateTrailEffects(b);
+        updateBulletInterval(b);
+
+        if (b.timer.get(0, damageInterval)) {
+            float critical = trueCritical();
+            Damage2.criticalCollidePoint(b, b.team, hitEffect, b.aimX, b.aimY,critical);
+        }
+
+        if (b.timer.get(1, beamEffectInterval)) {
+            beamEffect.at(b.aimX, b.aimY, beamEffectSize * b.fslope(), hitColor);
+        }
+
+        if (shake > 0) {
+            Effect.shake(shake, shake, b);
         }
     }
 

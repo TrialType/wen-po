@@ -1,4 +1,4 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
 import arc.math.Mathf;
 import arc.math.geom.Vec2;

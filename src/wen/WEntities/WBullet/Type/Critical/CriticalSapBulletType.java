@@ -1,4 +1,4 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
 import arc.math.Mathf;
 import arc.math.geom.Vec2;
@@ -7,7 +7,7 @@ import arc.util.Time;
 import mindustry.ai.types.MissileAI;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
-import mindustry.entities.bullet.PointBulletType;
+import mindustry.entities.bullet.SapBulletType;
 import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.world.blocks.ControlBlock;
@@ -17,9 +17,36 @@ import wen.inter.Critical;
 
 import static mindustry.Vars.*;
 
-public class CriticalPointBulletType extends PointBulletType implements Critical {
-    public float criticalChance1 = 0.2f, criticalChance2 = 0.2f, criticalChance3 = 0.2f;
-    public float critical1 = 1.2f, critical2 = 0.2f, critical3 = 0.2f;
+public class CriticalSapBulletType extends SapBulletType implements Critical {
+    public float criticalChance1 = 0.2f, criticalChance2 = 1, criticalChance3 = 1;
+    public float critical1 = 1.2f, critical2 = 1, critical3 = 1;
+
+    @Override
+    public void init(Bullet b) {
+        super.init(b);
+        Healthc target = Damage.linecast(b, b.x, b.y, b.rotation(), length);
+        b.data = target;
+        if (target != null) {
+            float result = Math.max(Math.min(target.health(), damage), 0);
+            if (b.owner instanceof Healthc h) {
+                h.heal(result * sapStrength * trueCritical());
+            }
+        }
+        if (target instanceof Hitboxc hit) {
+            hit.collision(b, hit.x(), hit.y());
+            b.collision(hit, hit.x(), hit.y());
+        } else if (target instanceof Building tile) {
+            if (tile.collide(b)) {
+                float cri = trueCritical();
+                b.damage *= cri;
+                tile.collision(b);
+                hit(b, tile.x, tile.y);
+                b.damage /= cri;
+            }
+        } else {
+            b.data = new Vec2().trns(b.rotation(), length).add(b.x, b.y);
+        }
+    }
 
     @Override
     public void hit(Bullet b, float x, float y) {

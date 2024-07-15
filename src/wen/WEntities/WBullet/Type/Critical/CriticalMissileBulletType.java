@@ -1,16 +1,13 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
-import arc.Events;
 import arc.math.Mathf;
 import arc.math.geom.Vec2;
 import arc.util.Nullable;
 import arc.util.Time;
-import arc.util.Tmp;
 import mindustry.ai.types.MissileAI;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
-import mindustry.entities.bullet.ExplosionBulletType;
-import mindustry.game.EventType;
+import mindustry.entities.bullet.MissileBulletType;
 import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.world.blocks.ControlBlock;
@@ -20,9 +17,9 @@ import wen.inter.Critical;
 
 import static mindustry.Vars.*;
 
-public class CriticalExplosionBulletType extends ExplosionBulletType implements Critical {
-    public float criticalChance1 = 0.2f, criticalChance2 = 0.2f, criticalChance3 = 0.2f;
-    public float critical1 = 1.2f, critical2 = 1.2f, critical3 = 1.2f;
+public class CriticalMissileBulletType extends MissileBulletType implements Critical {
+    public float criticalChance1 = 0.2f, criticalChance2 = 1, criticalChance3 = 1;
+    public float critical1 = 1.2f, critical2 = 1, critical3 = 1;
 
     @Override
     public void hit(Bullet b, float x, float y) {

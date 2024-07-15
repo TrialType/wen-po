@@ -1,4 +1,4 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
 import arc.math.Mathf;
 import arc.math.geom.Vec2;
@@ -7,7 +7,7 @@ import arc.util.Time;
 import mindustry.ai.types.MissileAI;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
-import mindustry.entities.bullet.BulletType;
+import mindustry.entities.bullet.LaserBoltBulletType;
 import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.world.blocks.ControlBlock;
@@ -17,7 +17,7 @@ import wen.inter.Critical;
 
 import static mindustry.Vars.*;
 
-public class CriticalBulletType extends BulletType implements Critical {
+public class CriticalLaserBoltBulletType extends LaserBoltBulletType implements Critical {
     public float criticalChance1 = 0.2f, criticalChance2 = 1, criticalChance3 = 1;
     public float critical1 = 1.2f, critical2 = 1, critical3 = 1;
 

@@ -1,15 +1,17 @@
-package wen.WEntities.WBullet.Type;
+package wen.WEntities.WBullet.Type.Critical;
 
+import arc.Events;
+import arc.math.Angles;
 import arc.math.Mathf;
 import arc.math.geom.Vec2;
 import arc.util.Nullable;
 import arc.util.Time;
 import arc.util.Tmp;
 import mindustry.ai.types.MissileAI;
-import mindustry.content.Fx;
 import mindustry.content.StatusEffects;
 import mindustry.entities.*;
-import mindustry.entities.bullet.RailBulletType;
+import mindustry.entities.bullet.LaserBulletType;
+import mindustry.game.EventType;
 import mindustry.game.Team;
 import mindustry.gen.*;
 import mindustry.world.blocks.ControlBlock;
@@ -19,12 +21,9 @@ import wen.inter.Critical;
 
 import static mindustry.Vars.*;
 
-public class CriticalRailBulletType extends RailBulletType implements Critical {
-    static float furthest = 0;
-    static boolean any = false;
-
+public class CriticalLaserBulletType extends LaserBulletType implements Critical {
     public float criticalChance1 = 0.2f, criticalChance2 = 0.2f, criticalChance3 = 0.2f;
-    public float critical1 = 1.2f, critical2 = 1.2f, critical3 = 1.2f;
+    public float critical1 = 1.2f, critical2 = 0.2f, critical3 = 0.2f;
 
     @Override
     public void hit(Bullet b, float x, float y) {
@@ -69,27 +68,30 @@ public class CriticalRailBulletType extends RailBulletType implements Critical {
 
     @Override
     public void init(Bullet b) {
-        super.init(b);
+        float resultLength = Damage.collideLaser(b, length, largeHit, laserAbsorb, pierceCap), rot = b.rotation();
 
-        b.fdata = length;
-        furthest = length;
-        any = false;
-        Damage2.criticalCollideLine(b, b.team, b.type.hitEffect, b.x, b.y, b.rotation(), length, false, false, trueCritical());
-        float resultLen = furthest;
+        laserEffect.at(b.x, b.y, rot, resultLength * 0.75f);
 
-        Vec2 nor = Tmp.v1.trns(b.rotation(), 1f).nor();
-        if (pointEffect != Fx.none) {
-            for (float i = 0; i <= resultLen; i += pointEffectSpace) {
-                pointEffect.at(b.x + nor.x * i, b.y + nor.y * i, b.rotation(), trailColor);
+        if (lightningSpacing > 0) {
+            int idx = 0;
+            for (float i = 0; i <= resultLength; i += lightningSpacing) {
+                float cx = b.x + Angles.trnsx(rot, i),
+                        cy = b.y + Angles.trnsy(rot, i);
+
+                int f = idx++;
+
+                for (int s : Mathf.signs) {
+                    Time.run(f * lightningDelay, () -> {
+                        if (b.isAdded() && b.type == this) {
+                            Lightning.create(b, lightningColor,
+                                    (lightningDamage < 0 ? damage : lightningDamage) *
+                                            trueCritical(),
+                                    cx, cy, rot + 90 * s + Mathf.range(lightningAngleRand),
+                                    lightningLength + Mathf.random(lightningLengthRand));
+                        }
+                    });
+                }
             }
-        }
-
-        if (!any && endEffect != Fx.none) {
-            endEffect.at(b.x + nor.x * resultLen, b.y + nor.y * resultLen, b.rotation(), hitColor);
-        }
-
-        if (lineEffect != Fx.none) {
-            lineEffect.at(b.x, b.y, b.rotation(), hitColor, new Vec2(b.x, b.y).mulAdd(nor, resultLen));
         }
     }
 

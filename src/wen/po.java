@@ -2,12 +2,17 @@ package wen;
 
 import arc.Events;
 import arc.util.Time;
+import mindustry.content.Blocks;
+import mindustry.content.Items;
 import mindustry.game.EventType;
 import mindustry.mod.*;
+import mindustry.world.blocks.defense.turrets.ItemTurret;
 import wen.WContents.WBlocks;
 import wen.WContents.WPlanets;
+import wen.WContents.WStatusEffects;
 import wen.WEntities.WBlocks.BuildCoreBlock;
-import wen.WEntities.WBullet.Type.*;
+import wen.WEntities.WBullet.Type.Critical.*;
+import wen.WEntities.WBullet.Type.Other.MultistageBulletType;
 import wen.WType.MoreTechResearchDialog;
 
 import static mindustry.Vars.ui;
@@ -38,8 +43,19 @@ public class po extends Mod {
         ClassMap.classes.put("CriticalSapBulletType", CriticalSapBulletType.class);
         ClassMap.classes.put("CriticalShrapnelBulletType", CriticalShrapnelBulletType.class);
         ClassMap.classes.put("CriticalSpaceLiquidBulletType", CriticalSpaceLiquidBulletType.class);
+        WStatusEffects.load();
         WPlanets.load();
         WBlocks.load();
         Events.on(EventType.ClientLoadEvent.class, e -> Time.runTask(10f, () -> ui.research = new MoreTechResearchDialog()));
+
+        ((ItemTurret) Blocks.duo).ammoTypes.put(Items.metaglass, new MultistageBulletType() {{
+            damage = 10;
+            onlyBoss = false;
+            speed = 3;
+            lifetime = 180;
+            width = 1;
+            height = 200;
+            knockback = 1;
+        }});
     }
 }
