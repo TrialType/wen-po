@@ -47,15 +47,5 @@ public class po extends Mod {
         WPlanets.load();
         WBlocks.load();
         Events.on(EventType.ClientLoadEvent.class, e -> Time.runTask(10f, () -> ui.research = new MoreTechResearchDialog()));
-
-        ((ItemTurret) Blocks.duo).ammoTypes.put(Items.metaglass, new MultistageBulletType() {{
-            damage = 10;
-            onlyBoss = false;
-            speed = 3;
-            lifetime = 180;
-            width = 1;
-            height = 200;
-            knockback = 1;
-        }});
     }
 }
